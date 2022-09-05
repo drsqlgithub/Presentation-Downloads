@@ -1,0 +1,154 @@
+<?xml version="1.0"?>
+<SqlWorkbenchSqlProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="How to Write A DML Trigger">
+  <Items>
+    <LogicalFolder Name="Connections" Type="2" Sorted="true">
+      <Items>
+        <ConnectionNode Name="(local):DRSQL-TOUCHY\Louis">
+          <Created>2014-03-07T18:28:16.5340818-06:00</Created>
+          <Type>SQL</Type>
+          <Server>(local)</Server>
+          <UserName />
+          <Authentication>Windows Authentication</Authentication>
+          <InitialDB />
+          <LoginTimeout>15</LoginTimeout>
+          <ExecutionTimeout>0</ExecutionTimeout>
+          <ConnectionProtocol>NotSpecified</ConnectionProtocol>
+          <ApplicationName>Microsoft SQL Server Management Studio - Query</ApplicationName>
+        </ConnectionNode>
+        <ConnectionNode Name="DRSQL-ULTRA:DRSQL-TOUCHY\Louis">
+          <Created>2013-06-24T20:13:57.7422278-05:00</Created>
+          <Type>SQL</Type>
+          <Server>DRSQL-ULTRA</Server>
+          <UserName />
+          <Authentication>Windows Authentication</Authentication>
+          <InitialDB />
+          <LoginTimeout>15</LoginTimeout>
+          <ExecutionTimeout>0</ExecutionTimeout>
+          <ConnectionProtocol>NotSpecified</ConnectionProtocol>
+          <ApplicationName>Microsoft SQL Server Management Studio - Query</ApplicationName>
+        </ConnectionNode>
+      </Items>
+    </LogicalFolder>
+    <LogicalFolder Name="Queries" Type="0" Sorted="true">
+      <Items>
+        <FileNode Name="0-00 - Trigger and Template Overview.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local):True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(local)</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>0-00 - Trigger and Template Overview.sql</FullPath>
+        </FileNode>
+        <FileNode Name="1-01 - Initialize Database.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local):True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(local)</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>1-01 - Initialize Database.sql</FullPath>
+        </FileNode>
+        <FileNode Name="1-02 - Multi-row validations.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local):True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(local)</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>1-02 - Multi-row validations.sql</FullPath>
+        </FileNode>
+        <FileNode Name="1-03 - Error Handling.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local):True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(local)</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>1-03 - Error Handling.sql</FullPath>
+        </FileNode>
+        <FileNode Name="2-01 - Example - Maintaining Row Create and Modify Time.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local):True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(local)</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>2-01 - Example - Maintaining Row Create and Modify Time.sql</FullPath>
+        </FileNode>
+        <FileNode Name="2-02 - Example - Preventing a Negative Balance.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local):True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(local)</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>2-02 - Example - Preventing a Negative Balance.sql</FullPath>
+        </FileNode>
+        <FileNode Name="2-03 - Audit Trail.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local):True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(local)</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>2-03 - Audit Trail.sql</FullPath>
+        </FileNode>
+        <FileNode Name="2-04 - Range Uniqueness.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local):True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(local)</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>2-04 - Range Uniqueness.sql</FullPath>
+        </FileNode>
+        <FileNode Name="2-10 - Multiple Cascade Paths.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local):True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(local)</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>2-10 - Multiple Cascade Paths.sql</FullPath>
+        </FileNode>
+        <FileNode Name="2-11 - Example - Updatable View.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local):True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(local)</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>2-11 - Example - Updatable View.sql</FullPath>
+        </FileNode>
+        <FileNode Name="2-12 - High Speed Data Diversion.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local):True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(local)</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>2-12 - High Speed Data Diversion.sql</FullPath>
+        </FileNode>
+        <FileNode Name="2-12a - Loading 1000 Rows.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local):True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(local)</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>2-12a - Loading 1000 Rows.sql</FullPath>
+        </FileNode>
+        <FileNode Name="2-12b - Loading 20200 Rows.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local):True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(local)</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>2-12b - Loading 20200 Rows.sql</FullPath>
+        </FileNode>
+        <FileNode Name="2-15 - Example - Foreign Key.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local):True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(local)</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>2-15 - Example - Foreign Key.sql</FullPath>
+        </FileNode>
+        <FileNode Name="4-01 - Looks like it worked.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local):True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(local)</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>4-01 - Looks like it worked.sql</FullPath>
+        </FileNode>
+        <FileNode Name="4-02 - Metadata.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DRSQL-ULTRA:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DRSQL-ULTRA</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>4-02 - Metadata.sql</FullPath>
+        </FileNode>
+        <FileNode Name="4-03 - Settings.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DRSQL-ULTRA:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DRSQL-ULTRA</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>4-03 - Settings.sql</FullPath>
+        </FileNode>
+        <FileNode Name="4-04- Trigger Order.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local):True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(local)</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>4-04- Trigger Order.sql</FullPath>
+        </FileNode>
+        <FileNode Name="4-05-Multi-RowValidations Redone With INSTEAD OF triggers.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local):True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(local)</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>4-05-Multi-RowValidations Redone With INSTEAD OF triggers.sql</FullPath>
+        </FileNode>
+      </Items>
+    </LogicalFolder>
+    <LogicalFolder Name="Miscellaneous" Type="3" Sorted="true">
+      <Items />
+    </LogicalFolder>
+  </Items>
+</SqlWorkbenchSqlProject>
