@@ -1,4 +1,8 @@
 
-Use this link to download the PowerPoint:
+Use this link to download the latest PowerPoint:
 
 https://www.dropbox.com/scl/fi/p4r003wx6c9pnowqq16zk/Who-Cares-About-Database-Design.pptx?rlkey=box5mlpkwjgx29xoz99b9wuk0&st=94dk71pm&dl=0
+
+Use this to go to the folder with all of the versions (they are too big for github)
+
+https://www.dropbox.com/scl/fo/yvxfjqv9eymcqvjs9f8yf/AJq6sCbk9dQ2Bi47CVWnTSk?rlkey=x7mu8fvnwf140whrokhy6rj3h&dl=0
