@@ -4,6 +4,7 @@ GO
 /*
 Stupid, useful, and other techniques with window functions
 */
+--Present--
 
 --Okay hotshot, what will these queries do?
 
@@ -33,7 +34,7 @@ The output demonstrates what you get with a window function for () with and with
  /*
  Using Window Functions of Aggregates... gets a bit messy, but very powerful too.
  */
- 
+ --Present--
 --sales by product and year
 SELECT ProductAlternateKey, CalendarYear, SUM(SalesAmount)
 FROM   dbo.FactInternetSales
@@ -70,7 +71,7 @@ This is because the window functions can now only access the columns: ProductAlt
 
 Now I chnage it to aggregate at the window level and then aggregate at the partition level
 */
-
+--Present--
 --sales by prodct, calendar year, compared to sales for all time, and by only product
 SELECT ProductAlternateKey,
        CalendarYear,
@@ -132,6 +133,8 @@ BIG KEY: You probably will use some tool to generate this code at times. You NEE
 
 The key is you can access any agregates or key values in a window. Which is why we used the FIRST_VALUE and LAST_VALUE aggregate functions. I might be tempted to write this as:
 */
+
+--Present--
 WITH ProductYearSales AS (
 
 --sales by product, calendar year, compared to sales for all time, and by only product
@@ -259,6 +262,7 @@ So check the performance if you do write in a more step-like mode, but in querie
 There are lots of cool aggregate functions 
 */
 
+--Present--
 --ranking data:
 
 --Rank order(s) per day (leaves gaps)
@@ -284,7 +288,7 @@ ORDER BY FullDateAlternateKey ASC;
 
 
 --finding gaps in series
-
+--Present--
 --in this case, date_dim is an integer that looks like the date, like 20260411 today. 
 --this makes it an easy thing to find gaps.
 WITH DateOrder AS (
@@ -300,7 +304,7 @@ FROM   DateOrder
 WHERE DateOrder.DateKey <> SecondCopy.DateKey + 1;
 
 
-
+--Present--
 --Get the previous non-null sales day for a product
 
 --Adding IGNORE NULLS on some of the expressions makes it skip null values when 

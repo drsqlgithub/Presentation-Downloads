@@ -5,6 +5,8 @@
 -- https://drsql.link/2026/01/28/performance-test-of-generating-a-set-of-sequential-numbers/
 -- https://drsql.link/2026/02/04/generating-a-set-of-sequential-numbers-part-2/
 
+--Present-- 
+
 --One of the simplest examples is generating a series of numbers. For example:
 
 
@@ -29,6 +31,7 @@ But as I always suggest people do... take this to a bit of a crazy place to see 
 As an example, a sequence where the value isnt an integer and increases by 2.446 each iteration:
 */
 
+--Present-- 
 
 --Types have to match perfectly, this won't even work.
 WITH NewSequence AS (
@@ -47,7 +50,7 @@ FROM   NewSequence;
 -- and if it DID work, the actual type will likely be larger to allow
 -- for larger loop values
 
-
+--Present-- 
 
 --Perfect match, wild output
 WITH NewSequence AS (
@@ -62,5 +65,5 @@ FROM   NewSequence;
 
 
 
-
+--Present-- 
 --Goto folder named 9 - Breadth Processing - For a hierarchy example

@@ -3,6 +3,8 @@ GO
 /*
 Window Functions:
 */
+--Present--
+
 --reminder of the data
 SELECT SetId,
        GroupingId,
@@ -10,6 +12,7 @@ SELECT SetId,
 FROM   [Set];
 
 
+--Present--
 --show that the window includes all 9 rows when using ()
 SELECT SetId, GroupingId, Value,
     '' AS 'Window ->',
@@ -19,7 +22,7 @@ SELECT SetId, GroupingId, Value,
 FROM   [Set];
 GO
 
-
+--Present--
 --show the sizes of the window when partitioning by GroupingId
 SELECT SetId, GroupingId, Value,
     '' AS 'Window ->',
@@ -29,6 +32,7 @@ SELECT SetId, GroupingId, Value,
 FROM   [Set];
 GO
 
+--Present--
 --now value
 SELECT SetId, GroupingId, Value,
     '' AS 'Window ->',
@@ -38,6 +42,7 @@ SELECT SetId, GroupingId, Value,
 FROM   [Set];
 GO
 
+--Present--
 --Not just columns
 SELECT SetId, GroupingId, Value, CASE WHEN value < 50 THEN 1 ELSE 0 END AS partition,
     '' AS 'Window ->',
@@ -49,7 +54,7 @@ GO
 
 --note: keys don't matter to the windows (they do for your logic, and performance, but not for the act of partitioning)
 
-
+--Present--
 --Can even be a literal (which of course, would just be the same as ()
 SELECT SetId, GroupingId, Value, 1 AS partition,
     '' AS 'Window ->',
@@ -71,11 +76,12 @@ FROM   [Set];
 GO
 
 /*
-The last two I DID expect to fail
+The last two I DID expect to fail with no column data in there
 */
 
 
 
+--Present--
 --As of SQL Server 2022, you can use the WINDOW clause to just type the partition
 --once. VERY helpful for documentation.
 SELECT SetId, GroupingId, Value,
@@ -87,7 +93,7 @@ FROM   [Set]
 WINDOW LONGEXPRESSION AS (Partition BY CASE WHEN value < 50 THEN 1 ELSE 0 END)
 GO
 
-
+--Present--
 --multiple windows per statement
 SELECT SetId,
     '' AS 'Window G->',
@@ -104,6 +110,7 @@ FROM   [Set];
 
 --remember to be careful with the window and WHERE clauses
 
+--Present--
 --don't do this:
 SELECT SetId, GroupingId, Value,
     '' AS 'Window ->',
@@ -112,6 +119,8 @@ SELECT SetId, GroupingId, Value,
 FROM   [Set]
 WHERE  Value between 20 and 30;
 
+
+--Present--
 --when you mean this:
 
 WITH ALLRows AS (
@@ -133,6 +142,8 @@ WHERE  Value between 20 and 30;
 /*
 When Sorting Matters
 */
+
+--Present--
 
 --ROW_NUMBER requires an ordered partition
 SELECT SetId,GroupingId, Value,
@@ -168,7 +179,7 @@ WINDOW GroupingIdDesc AS (PARTITION BY GroupingId ORDER BY NEWID() DESC),
 Reaching back and forth
 */
 
-
+--Present--
 --you can do a lot of things with aggregates, like aggregating values you are ordering by
 --this is where we get some rolling aggregates. And in this cass backwards and forwards.
 SELECT SetId,
@@ -192,6 +203,8 @@ WINDOW ValueOrderAsc AS (ORDER BY VALUE ASC),
        ValueOrderDesc AS (ORDER BY VALUE DESC)
 ORDER BY SetId;
 
+
+--Present--
 
 --specifically fetching a value 
 SELECT SetId,
@@ -258,7 +271,8 @@ WINDOW ValueOrderAsc AS (ORDER BY VALUE ASC),
        ValueOrderDesc AS (ORDER BY VALUE DESC)
 
 
---can do it multiple days
+--can lag or lead in differen directions based on sort
+--can even get current row values
 SELECT SetId,
        GroupingId,
        Value,
@@ -286,6 +300,8 @@ WINDOW ValueOrderAsc AS (ORDER BY VALUE ASC),
        ValueOrderDesc AS (ORDER BY VALUE DESC)
 
 
+
+--Present--
 --getting the first and last values in a window
 SELECT SetId, 
        GroupingId,
@@ -316,8 +332,12 @@ CURRENT ROW
 */
 
 */
+--Present--
+
 --Getting values form current and 3 rolling frames (ordered by value, fetching 3 full frames in 
 --the second window)
+
+
 SELECT SetId, 
        GroupingId,
        Value,
@@ -333,7 +353,7 @@ SELECT SetId,
 
 FROM   [Set]
 WINDOW ValueOrderAsc as (ORDER BY VALUE ASC ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW), --these first two windows
-       ValueOrderDesc as (ORDER BY VALUE DESC),                                                --are equivalent
+       ValueOrderDesc as (ORDER BY VALUE DESC),                                                --are equivalent (though in different orders)
        ValueOrderAsc3 as (ORDER BY VALUE ASC ROWS BETWEEN 0 PRECEDING AND 2 FOLLOWING)  ,
        ValueOrderDesc3 as (ORDER BY VALUE DESC ROWS BETWEEN 0 PRECEDING AND 2 FOLLOWING)
 ORDER BY SetId asc;

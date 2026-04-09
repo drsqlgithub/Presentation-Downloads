@@ -44,6 +44,7 @@ FROM   [Set];
 /*
 Group by queries
 */
+--Present--
 --simple/typical case 
 SELECT GroupingId,
        MAX(SetId) AS MaxSetId,
@@ -51,16 +52,19 @@ SELECT GroupingId,
 FROM   [Set]
 GROUP  BY GroupingId;
 
+--Present--
 --full table with no group or where
 SELECT MAX(Value) AS MaxValue
 FROM   [Set];
 
+--Present--
 --full table with group or where
 SELECT MIN(Value) AS MinValue,
        MAX(Value) AS MaxValue
 FROM   [Set]
 WHERE  GroupingId IN (1,2);
 
+--Present--
 --HAVING
 SELECT GroupingId,
        MAX(SetId) AS MaxSetId,
@@ -69,8 +73,6 @@ SELECT GroupingId,
 FROM   [Set]
 GROUP  BY GroupingId
 HAVING COUNT(*) > 1; --eliminate single row groups
-
-
 
 --forcing the set to be less likely ordered. Order is NOT guaranteed
 --in any case if the last statement does not include an ORDER BY;

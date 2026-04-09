@@ -4,6 +4,8 @@
 USE AdventureWorksDW2025
 GO
 
+--Present-- (if you didn't skip this)
+
 /*
 Running Totals
 */
@@ -33,6 +35,8 @@ ORDER BY FullDateAlternateKey ASC
 
 
 --But what if you want sales over the past 5 days, not sales
+
+--Present-- 
 
 --Rolling Averages, including every day:
 SELECT ProductAlternateKey, 

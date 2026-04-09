@@ -7,7 +7,9 @@ Simple adjacency list Code
 -- NOTE this is part of a larger presentation you can find on hierarchy processing you can find here:
 -- https://github.com/drsqlgithub/Presentation-Downloads/tree/main/How%20To%20Implement%20a%20Hierarchy%20In%20SQL%20Server
 
-I won't demo today, but just use this to load some data for demo.
+I won't demo today, but just use this to load some data for demo. 
+
+Executing to show you the new data
 
 ********************/
 

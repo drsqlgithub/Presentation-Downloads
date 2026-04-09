@@ -3,16 +3,32 @@
   "WorkspaceRootPath": "C:\\Users\\lodavi\\OneDrive - The Christian Broadcasting Network, Inc\\Documents\\GitHub\\Presentation-Downloads\\SQL Techniques You Should Know\\Code\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\lodavi\\OneDrive - The Christian Broadcasting Network, Inc\\Documents\\GitHub\\Presentation-Downloads\\SQL Techniques You Should Know\\Code\\6 - Window Functions on Real Table.sql||{B5A506EB-11BE-4782-9A18-21265C2CA0B4}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:6 - Window Functions on Real Table.sql||{B5A506EB-11BE-4782-9A18-21265C2CA0B4}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\lodavi\\OneDrive - The Christian Broadcasting Network, Inc\\Documents\\GitHub\\Presentation-Downloads\\SQL Techniques You Should Know\\Code\\3 - GROUP BY.sql||{B5A506EB-11BE-4782-9A18-21265C2CA0B4}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:3 - GROUP BY.sql||{B5A506EB-11BE-4782-9A18-21265C2CA0B4}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\lodavi\\OneDrive - The Christian Broadcasting Network, Inc\\Documents\\GitHub\\Presentation-Downloads\\SQL Techniques You Should Know\\Code\\5 - Window Functions Simple.sql||{B5A506EB-11BE-4782-9A18-21265C2CA0B4}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:5 - Window Functions Simple.sql||{B5A506EB-11BE-4782-9A18-21265C2CA0B4}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\lodavi\\OneDrive - The Christian Broadcasting Network, Inc\\Documents\\GitHub\\Presentation-Downloads\\SQL Techniques You Should Know\\Code\\3 - GROUP BY.sql||{B5A506EB-11BE-4782-9A18-21265C2CA0B4}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:3 - GROUP BY.sql||{B5A506EB-11BE-4782-9A18-21265C2CA0B4}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\lodavi\\OneDrive - The Christian Broadcasting Network, Inc\\Documents\\GitHub\\Presentation-Downloads\\SQL Techniques You Should Know\\Code\\9 - Breadth Processing\\101-AdjacencyList-BaseWithSmallData.sql||{B5A506EB-11BE-4782-9A18-21265C2CA0B4}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:9 - Breadth Processing\\101-AdjacencyList-BaseWithSmallData.sql||{B5A506EB-11BE-4782-9A18-21265C2CA0B4}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\lodavi\\OneDrive - The Christian Broadcasting Network, Inc\\Documents\\GitHub\\Presentation-Downloads\\SQL Techniques You Should Know\\Code\\9 - Breadth Processing\\100-Create The Database.sql||{B5A506EB-11BE-4782-9A18-21265C2CA0B4}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:9 - Breadth Processing\\100-Create The Database.sql||{B5A506EB-11BE-4782-9A18-21265C2CA0B4}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\lodavi\\OneDrive - The Christian Broadcasting Network, Inc\\Documents\\GitHub\\Presentation-Downloads\\SQL Techniques You Should Know\\Code\\9 - Recursive CTE.sql||{B5A506EB-11BE-4782-9A18-21265C2CA0B4}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:9 - Recursive CTE.sql||{B5A506EB-11BE-4782-9A18-21265C2CA0B4}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\lodavi\\OneDrive - The Christian Broadcasting Network, Inc\\Documents\\GitHub\\Presentation-Downloads\\SQL Techniques You Should Know\\Code\\7 - (work on!)Louis Rolling Totals.sql||{B5A506EB-11BE-4782-9A18-21265C2CA0B4}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:7 - (work on!)Louis Rolling Totals.sql||{B5A506EB-11BE-4782-9A18-21265C2CA0B4}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\lodavi\\OneDrive - The Christian Broadcasting Network, Inc\\Documents\\GitHub\\Presentation-Downloads\\SQL Techniques You Should Know\\Code\\6 - Window Functions on Real Table.sql||{B5A506EB-11BE-4782-9A18-21265C2CA0B4}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:6 - Window Functions on Real Table.sql||{B5A506EB-11BE-4782-9A18-21265C2CA0B4}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\lodavi\\OneDrive - The Christian Broadcasting Network, Inc\\Documents\\GitHub\\Presentation-Downloads\\SQL Techniques You Should Know\\Code\\2 - Comparing Sets of data.sql||{B5A506EB-11BE-4782-9A18-21265C2CA0B4}",
@@ -30,19 +46,67 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "6 - Window Functions on Real Table.sql - (local).tempdb (NTD1\\lodavi (69))",
+              "DocumentIndex": 2,
+              "Title": "101-AdjacencyList-BaseWithSmallData.sql - (local).AdventureWorksDW2025 (NTD1\\lodavi (85))",
+              "DocumentMoniker": "C:\\Users\\lodavi\\OneDrive - The Christian Broadcasting Network, Inc\\Documents\\GitHub\\Presentation-Downloads\\SQL Techniques You Should Know\\Code\\9 - Breadth Processing\\101-AdjacencyList-BaseWithSmallData.sql",
+              "RelativeDocumentMoniker": "9 - Breadth Processing\\101-AdjacencyList-BaseWithSmallData.sql",
+              "ToolTip": "C:\\Users\\lodavi\\OneDrive - The Christian Broadcasting Network, Inc\\Documents\\GitHub\\Presentation-Downloads\\SQL Techniques You Should Know\\Code\\9 - Breadth Processing\\101-AdjacencyList-BaseWithSmallData.sql - (local).AdventureWorksDW2025 (NTD1\\lodavi (85))",
+              "RelativeToolTip": "9 - Breadth Processing\\101-AdjacencyList-BaseWithSmallData.sql - (local).AdventureWorksDW2025 (NTD1\\lodavi (85))",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2026-04-09T14:52:18.08Z",
+              "EditorCaption": " - (local).AdventureWorksDW2025 (NTD1\\lodavi (85))"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "100-Create The Database.sql - (local).AdventureWorksDW2025 (NTD1\\lodavi (84))",
+              "DocumentMoniker": "C:\\Users\\lodavi\\OneDrive - The Christian Broadcasting Network, Inc\\Documents\\GitHub\\Presentation-Downloads\\SQL Techniques You Should Know\\Code\\9 - Breadth Processing\\100-Create The Database.sql",
+              "RelativeDocumentMoniker": "9 - Breadth Processing\\100-Create The Database.sql",
+              "ToolTip": "C:\\Users\\lodavi\\OneDrive - The Christian Broadcasting Network, Inc\\Documents\\GitHub\\Presentation-Downloads\\SQL Techniques You Should Know\\Code\\9 - Breadth Processing\\100-Create The Database.sql - (local).AdventureWorksDW2025 (NTD1\\lodavi (84))",
+              "RelativeToolTip": "9 - Breadth Processing\\100-Create The Database.sql - (local).AdventureWorksDW2025 (NTD1\\lodavi (84))",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2026-04-09T14:51:59.871Z",
+              "EditorCaption": " - (local).AdventureWorksDW2025 (NTD1\\lodavi (84))"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "9 - Recursive CTE.sql - (local).AdventureWorksDW2025 (NTD1\\lodavi (79))",
+              "DocumentMoniker": "C:\\Users\\lodavi\\OneDrive - The Christian Broadcasting Network, Inc\\Documents\\GitHub\\Presentation-Downloads\\SQL Techniques You Should Know\\Code\\9 - Recursive CTE.sql",
+              "RelativeDocumentMoniker": "9 - Recursive CTE.sql",
+              "ToolTip": "C:\\Users\\lodavi\\OneDrive - The Christian Broadcasting Network, Inc\\Documents\\GitHub\\Presentation-Downloads\\SQL Techniques You Should Know\\Code\\9 - Recursive CTE.sql - (local).AdventureWorksDW2025 (NTD1\\lodavi (79))",
+              "RelativeToolTip": "9 - Recursive CTE.sql - (local).AdventureWorksDW2025 (NTD1\\lodavi (79))",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2026-04-09T14:51:25.777Z",
+              "EditorCaption": " - (local).AdventureWorksDW2025 (NTD1\\lodavi (79))"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "7 - (work on!)Louis Rolling Totals.sql - (local).AdventureWorksDW2025 (NTD1\\lodavi (69))",
+              "DocumentMoniker": "C:\\Users\\lodavi\\OneDrive - The Christian Broadcasting Network, Inc\\Documents\\GitHub\\Presentation-Downloads\\SQL Techniques You Should Know\\Code\\7 - (work on!)Louis Rolling Totals.sql",
+              "RelativeDocumentMoniker": "7 - (work on!)Louis Rolling Totals.sql",
+              "ToolTip": "C:\\Users\\lodavi\\OneDrive - The Christian Broadcasting Network, Inc\\Documents\\GitHub\\Presentation-Downloads\\SQL Techniques You Should Know\\Code\\7 - (work on!)Louis Rolling Totals.sql - (local).AdventureWorksDW2025 (NTD1\\lodavi (69))",
+              "RelativeToolTip": "7 - (work on!)Louis Rolling Totals.sql - (local).AdventureWorksDW2025 (NTD1\\lodavi (69))",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2026-04-09T14:49:35.293Z",
+              "EditorCaption": " - (local).AdventureWorksDW2025 (NTD1\\lodavi (69))"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "6 - Window Functions on Real Table.sql - (local).master (NTD1\\lodavi (71))",
               "DocumentMoniker": "C:\\Users\\lodavi\\OneDrive - The Christian Broadcasting Network, Inc\\Documents\\GitHub\\Presentation-Downloads\\SQL Techniques You Should Know\\Code\\6 - Window Functions on Real Table.sql",
               "RelativeDocumentMoniker": "6 - Window Functions on Real Table.sql",
-              "ToolTip": "C:\\Users\\lodavi\\OneDrive - The Christian Broadcasting Network, Inc\\Documents\\GitHub\\Presentation-Downloads\\SQL Techniques You Should Know\\Code\\6 - Window Functions on Real Table.sql - (local).tempdb (NTD1\\lodavi (69))",
-              "RelativeToolTip": "6 - Window Functions on Real Table.sql - (local).tempdb (NTD1\\lodavi (69))",
+              "ToolTip": "C:\\Users\\lodavi\\OneDrive - The Christian Broadcasting Network, Inc\\Documents\\GitHub\\Presentation-Downloads\\SQL Techniques You Should Know\\Code\\6 - Window Functions on Real Table.sql - (local).master (NTD1\\lodavi (71))",
+              "RelativeToolTip": "6 - Window Functions on Real Table.sql - (local).master (NTD1\\lodavi (71))",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
               "WhenOpened": "2026-04-09T04:18:26.57Z",
-              "EditorCaption": " - (local).tempdb (NTD1\\lodavi (69))"
+              "EditorCaption": " - (local).master (NTD1\\lodavi (71))"
             },
             {
               "$type": "Document",
@@ -58,39 +122,39 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "3 - GROUP BY.sql - (local).AdventureWorksDW2025 (NTD1\\lodavi (87))",
+              "DocumentIndex": 0,
+              "Title": "3 - GROUP BY.sql - (local).master (NTD1\\lodavi (81))",
               "DocumentMoniker": "C:\\Users\\lodavi\\OneDrive - The Christian Broadcasting Network, Inc\\Documents\\GitHub\\Presentation-Downloads\\SQL Techniques You Should Know\\Code\\3 - GROUP BY.sql",
               "RelativeDocumentMoniker": "3 - GROUP BY.sql",
-              "ToolTip": "C:\\Users\\lodavi\\OneDrive - The Christian Broadcasting Network, Inc\\Documents\\GitHub\\Presentation-Downloads\\SQL Techniques You Should Know\\Code\\3 - GROUP BY.sql - (local).AdventureWorksDW2025 (NTD1\\lodavi (87))",
-              "RelativeToolTip": "3 - GROUP BY.sql - (local).AdventureWorksDW2025 (NTD1\\lodavi (87))",
+              "ToolTip": "C:\\Users\\lodavi\\OneDrive - The Christian Broadcasting Network, Inc\\Documents\\GitHub\\Presentation-Downloads\\SQL Techniques You Should Know\\Code\\3 - GROUP BY.sql - (local).master (NTD1\\lodavi (81))",
+              "RelativeToolTip": "3 - GROUP BY.sql - (local).master (NTD1\\lodavi (81))",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
               "WhenOpened": "2026-04-09T03:35:45.751Z",
-              "EditorCaption": " - (local).AdventureWorksDW2025 (NTD1\\lodavi (87))"
+              "EditorCaption": " - (local).master (NTD1\\lodavi (81))"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "2 - Comparing Sets of data.sql - (local).tempdb (NTD1\\lodavi (67))",
+              "DocumentIndex": 7,
+              "Title": "2 - Comparing Sets of data.sql",
               "DocumentMoniker": "C:\\Users\\lodavi\\OneDrive - The Christian Broadcasting Network, Inc\\Documents\\GitHub\\Presentation-Downloads\\SQL Techniques You Should Know\\Code\\2 - Comparing Sets of data.sql",
               "RelativeDocumentMoniker": "2 - Comparing Sets of data.sql",
-              "ToolTip": "C:\\Users\\lodavi\\OneDrive - The Christian Broadcasting Network, Inc\\Documents\\GitHub\\Presentation-Downloads\\SQL Techniques You Should Know\\Code\\2 - Comparing Sets of data.sql - (local).tempdb (NTD1\\lodavi (67))",
-              "RelativeToolTip": "2 - Comparing Sets of data.sql - (local).tempdb (NTD1\\lodavi (67))",
+              "ToolTip": "C:\\Users\\lodavi\\OneDrive - The Christian Broadcasting Network, Inc\\Documents\\GitHub\\Presentation-Downloads\\SQL Techniques You Should Know\\Code\\2 - Comparing Sets of data.sql",
+              "RelativeToolTip": "2 - Comparing Sets of data.sql",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
               "WhenOpened": "2026-04-09T03:30:39.924Z",
-              "EditorCaption": " - (local).tempdb (NTD1\\lodavi (67))"
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "1 - Performance Tools.sql - (local).AdventureWorks2025 (NTD1\\lodavi (72))",
+              "DocumentIndex": 8,
+              "Title": "1 - Performance Tools.sql",
               "DocumentMoniker": "C:\\Users\\lodavi\\OneDrive - The Christian Broadcasting Network, Inc\\Documents\\GitHub\\Presentation-Downloads\\SQL Techniques You Should Know\\Code\\1 - Performance Tools.sql",
               "RelativeDocumentMoniker": "1 - Performance Tools.sql",
-              "ToolTip": "C:\\Users\\lodavi\\OneDrive - The Christian Broadcasting Network, Inc\\Documents\\GitHub\\Presentation-Downloads\\SQL Techniques You Should Know\\Code\\1 - Performance Tools.sql - (local).AdventureWorks2025 (NTD1\\lodavi (72))",
-              "RelativeToolTip": "1 - Performance Tools.sql - (local).AdventureWorks2025 (NTD1\\lodavi (72))",
+              "ToolTip": "C:\\Users\\lodavi\\OneDrive - The Christian Broadcasting Network, Inc\\Documents\\GitHub\\Presentation-Downloads\\SQL Techniques You Should Know\\Code\\1 - Performance Tools.sql",
+              "RelativeToolTip": "1 - Performance Tools.sql",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
               "WhenOpened": "2026-04-09T03:20:58.623Z",
-              "EditorCaption": " - (local).AdventureWorks2025 (NTD1\\lodavi (72))"
+              "EditorCaption": ""
             }
           ]
         }
