@@ -5,6 +5,7 @@ Set from the slides. Using these simple rows to show things that we can also
 visualize in the set. There are examples using AdventureWorks2025 which you can
 find here: https://learn.microsoft.com/en-us/sql/samples/adventureworks-install-configure
 */
+DROP TABLE IF EXISTS [Set];
 
 CREATE TABLE [Set] --Reserved Word, but I felt it fit the demo best. (and shows one more technique.
                    --what happens when you accidentally name something a Reserved keyword.
@@ -37,7 +38,7 @@ show the data
 SELECT SetId,
        GroupingId,
        Value
-FROM   [Set]
+FROM   [Set];
 
 
 /*
@@ -59,6 +60,16 @@ SELECT MIN(Value) AS MinValue,
        MAX(Value) AS MaxValue
 FROM   [Set]
 WHERE  GroupingId IN (1,2);
+
+--HAVING
+SELECT GroupingId,
+       MAX(SetId) AS MaxSetId,
+       MAX(Value) AS MaxValue,
+       COUNT(*) AS CountRows
+FROM   [Set]
+GROUP  BY GroupingId
+HAVING COUNT(*) > 1; --eliminate single row groups
+
 
 
 --forcing the set to be less likely ordered. Order is NOT guaranteed
@@ -91,6 +102,30 @@ SELECT GroupingId,
 FROM   BaseRows
 GROUP  BY GroupingId;
 
+--Can you do two sorted aggregates?
+WITH BaseRows AS 
+(
+    SELECT TOP 100 *
+    FROM   [Set]
+    ORDER BY NEWID()
+)
+
+SELECT GroupingId, 
+       STRING_AGG(Value,','), 
+       STRING_AGG(Value,',') WITHIN GROUP (ORDER BY Value) AS ValueCommaListAsc,
+       STRING_AGG(Value,',') WITHIN GROUP (ORDER BY Value DESC) AS ValueCommaListDesc
+FROM   BaseRows
+GROUP  BY GroupingId;
+
+/*
+Nope:
+
+Msg 8711, Level 16, State 1, Line 106
+Multiple ordered aggregate functions in the same scope have mutually incompatible orderings.
+
+I didn't realize until I tried it Wed night!
+*/
+
 
 /*
 Rollups - totals, subtotals, and more.
@@ -99,7 +134,8 @@ Rollups - totals, subtotals, and more.
 --rollup on group, nulls mean a total
 SELECT GroupingId,
        MAX(SetId) AS MaxSetId,
-       MAX(Value) AS MaxValue
+       MAX(Value) AS MaxValue,
+       SUM(Value) AS SumValue
 FROM   [Set]
 GROUP  BY ROLLUP(GroupingId);
 
@@ -108,12 +144,13 @@ GROUP  BY ROLLUP(GroupingId);
 SELECT GroupingId,
        MAX(SetId) AS MaxSetId,
        MAX(Value) AS MaxValue,
-       CASE WHEN GROUPING(GroupingId) = 1 THEN '--All Rows--' ELSE '' END AS Header
+       SUM(Value) AS SumValue,
+       CASE WHEN GROUPING(GroupingId) = 1 THEN '--All Rows--' ELSE 'Group Row' END AS Header
 FROM   [Set]
 GROUP  BY ROLLUP(GroupingId);
 
 
---multipl level gorup by, showing how GROUPING feels backwards at first
+--multiple level gorup by, showing how GROUPING feels backwards at first
 SELECT GroupingId,
        SetId,
        SUM(Value) AS SumValue,
@@ -121,7 +158,7 @@ SELECT GroupingId,
             --this can be confusing. Look at the output
             WHEN GROUPING(SetId) = 0 AND GROUPING(GroupingId) = 1 THEN 'Set Total' 
             WHEN GROUPING(SetId) = 1 AND GROUPING(GroupingId) = 1 THEN '--Grand Total--' 
-            WHEN GROUPING(SetId) = 0 AND GROUPING(GroupingId) = 0 THEN 'Detail Row' 
+            WHEN GROUPING(SetId) = 0 AND GROUPING(GroupingId) = 0 THEN 'Group Row' 
             END AS Header
 FROM   [Set]
 GROUP  BY ROLLUP(GroupingId, SetId);
@@ -157,10 +194,10 @@ SELECT GroupingId,
        CASE WHEN GROUPING(SetId) = 1 AND GROUPING(GroupingId) = 0 THEN 'Grouping Total' 
             WHEN GROUPING(SetId) = 0 AND GROUPING(GroupingId) = 1 THEN 'Set Total' 
             WHEN GROUPING(SetId) = 1 AND GROUPING(GroupingId) = 1 THEN '--Grand Total--' 
-            WHEN GROUPING(SetId) = 0 AND GROUPING(GroupingId) = 0 THEN 'Detail Row' 
+            WHEN GROUPING(SetId) = 0 AND GROUPING(GroupingId) = 0 THEN 'Group Row' 
             END AS Header
 FROM   [Set]
-GROUP  BY ROLLUP(SetId, GroupingId);
+GROUP  BY CUBE(SetId, GroupingId);
 
 /*
 Grouping sets are kind of bring your own adventure example:
@@ -173,7 +210,7 @@ SELECT GroupingId,
        CASE WHEN GROUPING(SetId) = 1 AND GROUPING(GroupingId) = 0 THEN 'Grouping Total' 
             WHEN GROUPING(SetId) = 0 AND GROUPING(GroupingId) = 1 THEN 'Set Total' 
             WHEN GROUPING(SetId) = 1 AND GROUPING(GroupingId) = 1 THEN '--Grand Total--' 
-            WHEN GROUPING(SetId) = 0 AND GROUPING(GroupingId) = 0 THEN 'Detail Row' 
+            WHEN GROUPING(SetId) = 0 AND GROUPING(GroupingId) = 0 THEN 'Group Row' 
             END AS Header
 FROM   [Set]
 GROUP  BY GROUPING SETS ((GroupingId),(GroupingId,SetId),())
@@ -190,6 +227,18 @@ SELECT GroupingId,
             END AS Header
 FROM   [Set]
 GROUP  BY GROUPING SETS ((GroupingId),(GroupingId,SetId))
+
+--no grand total from the () now
+SELECT GroupingId,
+       SetId,
+       SUM(Value) AS SumValue,
+       CASE WHEN GROUPING(SetId) = 1 AND GROUPING(GroupingId) = 0 THEN 'Grouping Total' 
+            WHEN GROUPING(SetId) = 0 AND GROUPING(GroupingId) = 1 THEN 'Set Total' 
+            WHEN GROUPING(SetId) = 1 AND GROUPING(GroupingId) = 1 THEN '--Grand Total--' 
+            WHEN GROUPING(SetId) = 0 AND GROUPING(GroupingId) = 0 THEN 'Detail Row' 
+            END AS Header
+FROM   [Set]
+GROUP  BY GROUPING SETS ((GroupingId,SetId))  --same as group by
 
 --duplicating levels in the GROUPING SETS
 SELECT GroupingId,
@@ -212,8 +261,8 @@ Something a bit larger/more interesting (but harder to follow when trying to fig
 USE AdventureWorksDW2025;
 GO
 
---get all sales, the totall number of orders (fact tables often at item grain for sales, 
---largely fro products
+--get all sales, the total number of orders (fact tables often at item grain for sales, 
+--largely for products
 SELECT SUM(SalesAmount) AS SalesTotal, COUNT(DISTINCT SalesOrderNumber) AS SalesCount,
        COUNT(*) AS SalesItemCount
 FROM   dbo.FactInternetSales
@@ -267,7 +316,9 @@ FROM   dbo.FactInternetSales
             ON dbo.FactInternetSales.OrderDateKey = dbo.DimDate.DateKey
          JOIN dbo.DimProduct
             ON DimProduct.ProductKey = FactInternetSales.ProductKey
-GROUP BY GROUPING SETS((ProductLine),())
+GROUP BY GROUPING SETS((ProductLine),());
+
+
 
 --Every column that isn't in an aggregate must show up in the GROUP BY So you can do any of these:
 SELECT ProductLine, CalendarYear, 
@@ -285,8 +336,8 @@ FROM   dbo.FactInternetSales
          JOIN dbo.DimProduct
             ON DimProduct.ProductKey = FactInternetSales.ProductKey
 --GROUP BY GROUPING SETS((ProductLine),(CalendarYear))
---GROUP BY GROUPING SETS((CalendarYear),(ProductLine))
+GROUP BY GROUPING SETS((CalendarYear),(ProductLine))
 --GROUP BY GROUPING SETS((CalendarYear,ProductLine))
-GROUP BY GROUPING SETS((CalendarYear,ProductLine),())
+--GROUP BY GROUPING SETS((CalendarYear,ProductLine),())
 
 --As long as those two columns appear

@@ -32,14 +32,14 @@ GO
 --now value
 SELECT SetId, GroupingId, Value,
     '' AS 'Window ->',
-    MIN(SetId) OVER (Partition BY Value) as MaxWindowValue,
+    MIN(SetId) OVER (Partition BY Value) as MinWindowValue,
     MAX(SetId) OVER (Partition BY Value) as MaxWindowValue,
-    COUNT(SetId) OVER (Partition BY Value) as MaxWindowValue
+    COUNT(SetId) OVER (Partition BY Value) as CountWindowValue
 FROM   [Set];
 GO
 
---now value
-SELECT SetId, GroupingId, Value,
+--Not just columns
+SELECT SetId, GroupingId, Value, CASE WHEN value < 50 THEN 1 ELSE 0 END AS partition,
     '' AS 'Window ->',
     MIN(SetId) OVER (Partition BY CASE WHEN value < 50 THEN 1 ELSE 0 end) as MaxWindowValue,
     MAX(SetId) OVER (Partition BY CASE WHEN value < 50 THEN 1 ELSE 0 end) as MaxWindowValue,
@@ -48,6 +48,31 @@ FROM   [Set];
 GO
 
 --note: keys don't matter to the windows (they do for your logic, and performance, but not for the act of partitioning)
+
+
+--Can even be a literal (which of course, would just be the same as ()
+SELECT SetId, GroupingId, Value, 1 AS partition,
+    '' AS 'Window ->',
+    MIN(SetId) OVER (Partition BY 1) as MaxWindowValue,
+    MAX(SetId) OVER (Partition BY 1) as MaxWindowValue,
+    COUNT(SetId) OVER (Partition BY 1) as MaxWindowValue
+FROM   [Set];
+GO
+
+--or variable
+DECLARE @partition INT = 2;
+--Can even be a literal (which of course, would just be the same as ()
+SELECT SetId, GroupingId, Value, @partition AS partition,
+    '' AS 'Window ->',
+    MIN(SetId) OVER (Partition BY @partition) as MaxWindowValue,
+    MAX(SetId) OVER (Partition BY @partition) as MaxWindowValue,
+    COUNT(SetId) OVER (Partition BY @partition) as MaxWindowValue
+FROM   [Set];
+GO
+
+/*
+The last two I DID expect to fail
+*/
 
 
 
@@ -65,16 +90,19 @@ GO
 
 --multiple windows per statement
 SELECT SetId,
-    '' AS 'Window ->',
+    '' AS 'Window G->',
     MIN(Value) OVER (PARTITION BY GroupingId) AS Grouping_MinWindowValue,
     MAX(Value) OVER (PARTITION BY GroupingId) AS Grouping_MaxWindowValue,
+    Count(Value) OVER (PARTITION BY GroupingId) AS Grouping_CountWindowValue,
 
+    '' AS 'Window V->',
     MIN(Value) OVER (PARTITION BY Value) AS Value_MinWindowValue,	
-    MAX(Value) OVER (PARTITION BY Value) AS Value_MaxWindowValue
+    MAX(Value) OVER (PARTITION BY Value) AS Value_MaxWindowValue,
+    Count(Value) OVER (PARTITION BY Value) AS Value_CountWindowValue
 FROM   [Set];	
 
 
---remember to be careful with the window.
+--remember to be careful with the window and WHERE clauses
 
 --don't do this:
 SELECT SetId, GroupingId, Value,
@@ -98,6 +126,8 @@ FROM   ALLRows
 WHERE  Value between 20 and 30;
 
 --VERY VERY DIFFERENT
+
+--NOTE: You cannot filter on a WINDOW function in SQL Server without a CTE.
 
 
 /*
@@ -125,7 +155,7 @@ SELECT SetId,GroupingId, Value,
     ROW_NUMBER() OVER GroupingIdDesc AS RowNum_PartGroupingDesc,
     ROW_NUMBER() OVER GroupingIdAsc  AS RowNum_PartGroupingAsc,
     ROW_NUMBER() OVER WholeTableDesc  AS RowNum_WholeTableDesc,
-    ROW_NUMBER() OVER WholeTableAsc  AS RowNum__WholeTableAsc
+    ROW_NUMBER() OVER WholeTableAsc  AS RowNum__WholeTableAsc --in output this may seem static, but PK value changes
 FROM   [Set]
 WINDOW GroupingIdDesc AS (PARTITION BY GroupingId ORDER BY NEWID() DESC),
        GroupingIdAsc AS (PARTITION BY GroupingId ORDER BY NEWID() ASC),
@@ -152,7 +182,7 @@ SELECT SetId,
         COUNT(Value) OVER ValueOrderAsc AS CountValueAsc,
 
         'ValueOrderDesc',
-
+        --
         MIN(Value) OVER ValueOrderDesc AS MinValueDesc,
         MAX(Value) OVER ValueOrderDesc AS MaxValueDesc,
         SUM(Value) OVER ValueOrderDesc AS SumValueDesc,
@@ -160,6 +190,7 @@ SELECT SetId,
 FROM   [Set]
 WINDOW ValueOrderAsc AS (ORDER BY VALUE ASC),
        ValueOrderDesc AS (ORDER BY VALUE DESC)
+ORDER BY SetId;
 
 
 --specifically fetching a value 
@@ -172,9 +203,14 @@ SELECT SetId,
     SUM(Value) OVER ValueOrderAsc AS SumValueAsc,
     COUNT(Value) OVER ValueOrderAsc AS CountValueAsc,
 
+    --NOTE: Lag and Lead get the row value, but they 
+    --behave based on sort order, not ROW order.
+
     --now we can reach back and forth a value
     LAG(SetId) OVER ValueOrderAsc AS LagSetIdValueAsc,
     LEAD(SetId) OVER ValueOrderAsc AS LeadSetIdValueAsc,
+    LAG(Value) OVER ValueOrderAsc AS LagValueValueAsc,
+    LEAD(Value) OVER ValueOrderAsc AS LeadValueValueAsc,
 
     'ValueOrderDesc',
 
@@ -185,11 +221,14 @@ SELECT SetId,
 
     --now we can reach back and forth a value
     LAG(SetId) OVER ValueOrderDesc AS LagSetIdValueDesc,
-    LEAD(SetId) OVER ValueOrderDesc AS LeadSetIdValueDesc
+    LEAD(SetId) OVER ValueOrderDesc AS LeadSetIdValueDesc,
+    LAG(Value) OVER ValueOrderDesc AS LagValueValueDesc,
+    LEAD(Value) OVER ValueOrderDesc AS LeadValueValueDesc
 
 FROM   [Set]
 WINDOW ValueOrderAsc AS (ORDER BY VALUE ASC),
-       ValueOrderDesc AS (ORDER BY VALUE DESC);
+       ValueOrderDesc AS (ORDER BY VALUE DESC)
+ORDER BY SetId;
 
 
 --can do it multiple days
@@ -212,6 +251,34 @@ SELECT SetId,
 
     LAG(SetId,2) OVER ValueOrderDesc AS Lag2SetIdValueDesc,
     LEAD(SetId,2) OVER ValueOrderDesc AS Lead2SetIdValueDesc
+
+
+FROM   [Set]
+WINDOW ValueOrderAsc AS (ORDER BY VALUE ASC),
+       ValueOrderDesc AS (ORDER BY VALUE DESC)
+
+
+--can do it multiple days
+SELECT SetId,
+       GroupingId,
+       Value,
+    'ValueOrderAsc',
+    --now we can reach back and forth a value
+
+    LEAD(SetId,2) OVER ValueOrderAsc AS LeadSetIdValueAsc_2, 
+    LEAD(SetId,1) OVER ValueOrderAsc AS LeadSetIdValueAsc_1, 
+    LAG(SetId,0) OVER ValueOrderAsc AS LagSetIdValueAsc_0, --gets current value
+    LAG(SetId,1) OVER ValueOrderAsc AS LagSetIdValueAsc_1,
+    LAG(SetId,2) OVER ValueOrderAsc AS LagSetIdValueAsc_2,
+
+    'ValueOrderDesc',
+    --now we can reach back and forth a value
+
+    LEAD(SetId,2) OVER ValueOrderDesc AS LeadSetIdValueDesc_2, 
+    LEAD(SetId,1) OVER ValueOrderDesc AS LeadSetIdValueDesc_1, 
+    LAG(SetId,0) OVER ValueOrderDesc AS LagSetIdValueDesc_0, --gets current value
+    LAG(SetId,1) OVER ValueOrderDesc AS LagSetIdValueDesc_1,
+    LAG(SetId,2) OVER ValueOrderDesc AS LagSetIdValueDesc_2
 
 
 FROM   [Set]
