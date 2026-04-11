@@ -48,7 +48,7 @@ GO
 /*
 Execution Information
 */
-
+DROP TABLE IF EXISTS #temp
 --highlight, choose Query/Include Actual Execution Plan (or Ctrl+M), then execute
 --then show the Live Query Plan
 SELECT Product.ProductID,
@@ -62,6 +62,7 @@ FROM   Sales.SalesOrderDetail
 		 JOIN Production.Product
 			ON Sales.SalesOrderDetail.ProductID = Production.Product.ProductID;
 
+DROP TABLE IF EXISTS #temp2
 --actual plan in text
 SET STATISTICS PROFILE ON;
 GO
@@ -99,4 +100,15 @@ GO
 SET STATISTICS TIME OFF;
 GO
 
-
+DROP TABLE IF EXISTS #temp3
+--live query plan
+SELECT Product.ProductID,
+       Product.Name,
+       Product.ProductNumber,
+       Product.MakeFlag,
+       Product.FinishedGoodsFlag,
+       Product.Color
+INTO #temp3
+FROM  Production.Product
+		 CROSS JOIN Production.Product AS p2--this will output a larger number of rows
+		 CROSS JOIN Production.Product AS p3--this will output a larger number of rows

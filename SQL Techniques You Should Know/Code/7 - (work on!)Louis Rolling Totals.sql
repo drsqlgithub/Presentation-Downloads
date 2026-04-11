@@ -70,13 +70,14 @@ FROM   dbo.DimDate --now we need every day, for each product
             LEFT JOIN dbo.FactInternetSales
                 ON DimProduct.ProductKey = FactInternetSales.ProductKey
                    AND dbo.FactInternetSales.OrderDateKey = dbo.DimDate.DateKey
-WHERE  DimDate.FullDateAlternateKey > '2010-12-18'
+
 GROUP BY ProductAlternateKey,
          FullDateAlternateKey
 )
 SELECT *
 FROM   BaseRows
 WHERE  RollingSum IS NOT NULL 
+AND  FullDateAlternateKey > '2010-12-18'
 ORDER BY ProductAlternateKey,FullDateAlternateKey ASC;
 
 
@@ -114,7 +115,7 @@ SELECT --generate time frames to look back to. For me, it is month or years
       --series starting with today, incremented by a day (end date is the date we
       --care about.
       DATEADD(day,-value ,@StartingValue) AS EndDate
-FROM   GENERATE_SERIES(0,5000) --back to the 70's
+FROM   GENERATE_SERIES(0,5000) 
 )
 SELECT *
 FROM TimeFrame

@@ -32,6 +32,7 @@ VALUES
 (8, 3, 80),
 (9, 4, 90);
 GO	
+
 /*
 show the data
 */
@@ -147,7 +148,7 @@ SELECT GroupingId,
        MAX(SetId) AS MaxSetId,
        MAX(Value) AS MaxValue,
        SUM(Value) AS SumValue,
-       CASE WHEN GROUPING(GroupingId) = 1 THEN '--All Rows--' ELSE 'Group Row' END AS Header
+       CASE WHEN GROUPING(GroupingId) = 1 THEN '--All Groups--' ELSE 'Group Row' END AS Header
 FROM   [Set]
 GROUP  BY ROLLUP(GroupingId);
 
@@ -255,6 +256,17 @@ FROM   [Set]
 GROUP  BY GROUPING SETS ((GroupingId),(GroupingId,SetId),(),
                          (GroupingId),(GroupingId,SetId),()); --yeah, you CAN repeat them!
 
+--Common error
+SELECT GroupingId,
+       SetId,
+       SUM(Value) AS SumValue,
+       CASE WHEN GROUPING(SetId) = 1 AND GROUPING(GroupingId) = 0 THEN 'Grouping Total' 
+            WHEN GROUPING(SetId) = 0 AND GROUPING(GroupingId) = 1 THEN 'Set Total' 
+            WHEN GROUPING(SetId) = 1 AND GROUPING(GroupingId) = 1 THEN '--Grand Total--' 
+            WHEN GROUPING(SetId) = 0 AND GROUPING(GroupingId) = 0 THEN 'Detail Row' 
+            END AS Header
+FROM   [Set]
+GROUP  BY GROUPING SETS (()); --unaggregated columns must appear in the GROUP BY, in a groupins set or otherwise
 
 /*
 Something a bit larger/more interesting (but harder to follow when trying to figure things out!
@@ -303,22 +315,6 @@ GROUP BY ROLLUP(ProductLine, CalendarYear)
 
 
 
---note, you can't use the following GROUPING SETS:
-SELECT ProductLine, CalendarYear, 
-       CASE WHEN GROUPING(ProductLine) = 1 AND GROUPING(CalendarYear) = 0 THEN 'CalendarYear Total' 
-            WHEN GROUPING(ProductLine) = 0 AND GROUPING(CalendarYear) = 1 THEN 'ProductLine Total' 
-            WHEN GROUPING(ProductLine) = 1 AND GROUPING(CalendarYear) = 1 THEN '--Grand Total--' 
-            WHEN GROUPING(ProductLine) = 0 AND GROUPING(CalendarYear) = 0 THEN 'Detail Row' 
-            END AS Header,
-
-SUM(SalesAmount) AS SalesTotal, COUNT(DISTINCT SalesOrderNumber) AS SalesCount,
-       COUNT(*) AS SalesItemCount
-FROM   dbo.FactInternetSales
-         JOIN dbo.DimDate
-            ON dbo.FactInternetSales.OrderDateKey = dbo.DimDate.DateKey
-         JOIN dbo.DimProduct
-            ON DimProduct.ProductKey = FactInternetSales.ProductKey
-GROUP BY GROUPING SETS((ProductLine),());
 
 
 
@@ -338,8 +334,9 @@ FROM   dbo.FactInternetSales
          JOIN dbo.DimProduct
             ON DimProduct.ProductKey = FactInternetSales.ProductKey
 --GROUP BY GROUPING SETS((ProductLine),(CalendarYear))
-GROUP BY GROUPING SETS((CalendarYear),(ProductLine))
+--GROUP BY GROUPING SETS((CalendarYear),(ProductLine))
 --GROUP BY GROUPING SETS((CalendarYear,ProductLine))
 --GROUP BY GROUPING SETS((CalendarYear,ProductLine),())
-
+GROUP BY GROUPING SETS((ProductLine,CalendarYear),(CalendarYear,ProductLine))
+ORDER BY ProductLine,CalendarYear
 --As long as those two columns appear

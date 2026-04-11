@@ -18,7 +18,8 @@ SELECT SetId, GroupingId, Value,
     '' AS 'Window ->',
     MIN(Value) OVER () AS MaxWindowValue,
     MAX(Value) OVER () AS MaxWindowValue,
-    COUNT(Value) OVER () AS CountWindowValues
+    COUNT(Value) OVER () AS CountWindowValues,
+    SUM(Value) OVER () AS TotalWindowValues
 FROM   [Set];
 GO
 
@@ -36,9 +37,9 @@ GO
 --now value
 SELECT SetId, GroupingId, Value,
     '' AS 'Window ->',
-    MIN(SetId) OVER (Partition BY Value) as MinWindowValue,
-    MAX(SetId) OVER (Partition BY Value) as MaxWindowValue,
-    COUNT(SetId) OVER (Partition BY Value) as CountWindowValue
+    MIN(SetId) OVER (Partition BY Value) as MinWindowSetId
+    MAX(SetId) OVER (Partition BY Value) as MaxWindowSetId,
+    COUNT(SetId) OVER (Partition BY Value) as CountWindowSetId
 FROM   [Set];
 GO
 
@@ -46,9 +47,9 @@ GO
 --Not just columns
 SELECT SetId, GroupingId, Value, CASE WHEN value < 50 THEN 1 ELSE 0 END AS partition,
     '' AS 'Window ->',
-    MIN(SetId) OVER (Partition BY CASE WHEN value < 50 THEN 1 ELSE 0 end) as MaxWindowValue,
-    MAX(SetId) OVER (Partition BY CASE WHEN value < 50 THEN 1 ELSE 0 end) as MaxWindowValue,
-    COUNT(SetId) OVER (Partition BY CASE WHEN value < 50 THEN 1 ELSE 0 end) as MaxWindowValue
+    MIN(SetId) OVER (Partition BY CASE WHEN value < 50 THEN 1 ELSE 0 end) as MaxWindowSetId,
+    MAX(SetId) OVER (Partition BY CASE WHEN value < 50 THEN 1 ELSE 0 end) as MaxWindowSetId,
+    COUNT(SetId) OVER (Partition BY CASE WHEN value < 50 THEN 1 ELSE 0 end) as MaxWindowSetId
 FROM   [Set];
 GO
 
@@ -58,9 +59,9 @@ GO
 --Can even be a literal (which of course, would just be the same as ()
 SELECT SetId, GroupingId, Value, 1 AS partition,
     '' AS 'Window ->',
-    MIN(SetId) OVER (Partition BY 1) as MaxWindowValue,
-    MAX(SetId) OVER (Partition BY 1) as MaxWindowValue,
-    COUNT(SetId) OVER (Partition BY 1) as MaxWindowValue
+    MIN(SetId) OVER (Partition BY 1) as MaxWindowSetId,
+    MAX(SetId) OVER (Partition BY 1) as MaxWindowSetId,
+    COUNT(SetId) OVER (Partition BY 1) as MaxWindowSetId
 FROM   [Set];
 GO
 
@@ -69,9 +70,9 @@ DECLARE @partition INT = 2;
 --Can even be a literal (which of course, would just be the same as ()
 SELECT SetId, GroupingId, Value, @partition AS partition,
     '' AS 'Window ->',
-    MIN(SetId) OVER (Partition BY @partition) as MaxWindowValue,
-    MAX(SetId) OVER (Partition BY @partition) as MaxWindowValue,
-    COUNT(SetId) OVER (Partition BY @partition) as MaxWindowValue
+    MIN(SetId) OVER (Partition BY @partition) as MaxWindowSetId,
+    MAX(SetId) OVER (Partition BY @partition) as MaxWindowSetId,
+    COUNT(SetId) OVER (Partition BY @partition) as MaxWindowSetId
 FROM   [Set];
 GO
 
@@ -86,9 +87,9 @@ The last two I DID expect to fail with no column data in there
 --once. VERY helpful for documentation.
 SELECT SetId, GroupingId, Value,
     '' AS 'Window ->',
-    MIN(SetId) OVER LONGEXPRESSION as MaxWindowValue,
-    MAX(SetId) OVER LONGEXPRESSION as MaxWindowValue,
-    COUNT(SetId) OVER LONGEXPRESSION as MaxWindowValue
+    MIN(SetId) OVER LONGEXPRESSION as MaxWindowSetId,
+    MAX(SetId) OVER LONGEXPRESSION as MaxWindowSetId,
+    COUNT(SetId) OVER LONGEXPRESSION as MaxWindowSetId
 FROM   [Set]
 WINDOW LONGEXPRESSION AS (Partition BY CASE WHEN value < 50 THEN 1 ELSE 0 END)
 GO
@@ -96,6 +97,8 @@ GO
 --Present--
 --multiple windows per statement
 SELECT SetId,
+    GroupingId,
+    Value,
     '' AS 'Window G->',
     MIN(Value) OVER (PARTITION BY GroupingId) AS Grouping_MinWindowValue,
     MAX(Value) OVER (PARTITION BY GroupingId) AS Grouping_MaxWindowValue,
@@ -220,10 +223,10 @@ SELECT SetId,
     --behave based on sort order, not ROW order.
 
     --now we can reach back and forth a value
-    LAG(SetId) OVER ValueOrderAsc AS LagSetIdValueAsc,
-    LEAD(SetId) OVER ValueOrderAsc AS LeadSetIdValueAsc,
-    LAG(Value) OVER ValueOrderAsc AS LagValueValueAsc,
-    LEAD(Value) OVER ValueOrderAsc AS LeadValueValueAsc,
+    LAG(SetId) OVER ValueOrderAsc AS LagSetIdAsc,
+    LEAD(SetId) OVER ValueOrderAsc AS LeadSetIdAsc,
+    LAG(Value) OVER ValueOrderAsc AS LagValueAsc,
+    LEAD(Value) OVER ValueOrderAsc AS LeadValueAsc,
 
     'ValueOrderDesc',
 
@@ -232,16 +235,17 @@ SELECT SetId,
     SUM(Value) OVER ValueOrderDesc AS SumValueDesc,
     COUNT(Value) OVER ValueOrderDesc AS CountValueDesc,
 
+    SetId,
     --now we can reach back and forth a value
-    LAG(SetId) OVER ValueOrderDesc AS LagSetIdValueDesc,
-    LEAD(SetId) OVER ValueOrderDesc AS LeadSetIdValueDesc,
-    LAG(Value) OVER ValueOrderDesc AS LagValueValueDesc,
-    LEAD(Value) OVER ValueOrderDesc AS LeadValueValueDesc
+    LAG(SetId) OVER ValueOrderDesc AS LagSetIdDesc,
+    LEAD(SetId) OVER ValueOrderDesc AS LeadSetIdDesc,
+    LAG(Value) OVER ValueOrderDesc AS LagValueDesc,
+    LEAD(Value) OVER ValueOrderDesc AS LeadValueDesc
 
 FROM   [Set]
 WINDOW ValueOrderAsc AS (ORDER BY VALUE ASC),
        ValueOrderDesc AS (ORDER BY VALUE DESC)
-ORDER BY SetId;
+ORDER BY [Set].SetId;
 
 
 --can do it multiple days
@@ -250,25 +254,26 @@ SELECT SetId,
        Value,
     'ValueOrderAsc',
     --now we can reach back and forth a value
-    LAG(SetId) OVER ValueOrderAsc AS LagSetIdValueAsc,
-    LEAD(SetId) OVER ValueOrderAsc AS LeadSetIdValueAsc,
+    LAG(SetId) OVER ValueOrderAsc AS LagSetIdAsc,
+    LEAD(SetId) OVER ValueOrderAsc AS LeadSetIdAsc,
 
-    LAG(SetId,2) OVER ValueOrderAsc AS Lag2SetIdValueAsc,
-    LEAD(SetId,2) OVER ValueOrderAsc AS Lead2SetIdValueAsc,
+    LAG(SetId,2) OVER ValueOrderAsc AS Lag2SetIdAsc,
+    LEAD(SetId,2) OVER ValueOrderAsc AS Lead2SetIdAsc,
 
     'ValueOrderDesc',
 
     --now we can reach back and forth a value
-    LAG(SetId) OVER ValueOrderDesc AS LagSetIdValueDesc,
-    LEAD(SetId) OVER ValueOrderDesc AS LeadSetIdValueDesc,
+    LAG(SetId) OVER ValueOrderDesc AS LagSetIdDesc,
+    LEAD(SetId) OVER ValueOrderDesc AS LeadSetIdDesc,
 
-    LAG(SetId,2) OVER ValueOrderDesc AS Lag2SetIdValueDesc,
-    LEAD(SetId,2) OVER ValueOrderDesc AS Lead2SetIdValueDesc
+    LAG(SetId,2) OVER ValueOrderDesc AS Lag2SetIdDesc,
+    LEAD(SetId,2) OVER ValueOrderDesc AS Lead2SetIdDesc
 
 
 FROM   [Set]
 WINDOW ValueOrderAsc AS (ORDER BY VALUE ASC),
        ValueOrderDesc AS (ORDER BY VALUE DESC)
+ORDER BY [Set].SetId;
 
 
 --can lag or lead in differen directions based on sort
@@ -279,26 +284,26 @@ SELECT SetId,
     'ValueOrderAsc',
     --now we can reach back and forth a value
 
-    LEAD(SetId,2) OVER ValueOrderAsc AS LeadSetIdValueAsc_2, 
-    LEAD(SetId,1) OVER ValueOrderAsc AS LeadSetIdValueAsc_1, 
-    LAG(SetId,0) OVER ValueOrderAsc AS LagSetIdValueAsc_0, --gets current value
-    LAG(SetId,1) OVER ValueOrderAsc AS LagSetIdValueAsc_1,
-    LAG(SetId,2) OVER ValueOrderAsc AS LagSetIdValueAsc_2,
+    LEAD(SetId,2) OVER ValueOrderAsc AS LeadSetIdAsc_2, 
+    LEAD(SetId,1) OVER ValueOrderAsc AS LeadSetIdAsc_1, 
+    LAG(SetId,0) OVER ValueOrderAsc AS LagSetIdAsc_0, --gets current value
+    LAG(SetId,1) OVER ValueOrderAsc AS LagSetIdAsc_1,
+    LAG(SetId,2) OVER ValueOrderAsc AS LagSetIdAsc_2,
 
     'ValueOrderDesc',
     --now we can reach back and forth a value
 
-    LEAD(SetId,2) OVER ValueOrderDesc AS LeadSetIdValueDesc_2, 
-    LEAD(SetId,1) OVER ValueOrderDesc AS LeadSetIdValueDesc_1, 
-    LAG(SetId,0) OVER ValueOrderDesc AS LagSetIdValueDesc_0, --gets current value
-    LAG(SetId,1) OVER ValueOrderDesc AS LagSetIdValueDesc_1,
-    LAG(SetId,2) OVER ValueOrderDesc AS LagSetIdValueDesc_2
+    LEAD(SetId,2) OVER ValueOrderDesc AS LeadSetIdDesc_2, 
+    LEAD(SetId,1) OVER ValueOrderDesc AS LeadSetIdDesc_1, 
+    LAG(SetId,0) OVER ValueOrderDesc AS LagSetIdDesc_0, --gets current value
+    LAG(SetId,1) OVER ValueOrderDesc AS LagSetIdDesc_1,
+    LAG(SetId,2) OVER ValueOrderDesc AS LagSetIdDesc_2
 
 
 FROM   [Set]
 WINDOW ValueOrderAsc AS (ORDER BY VALUE ASC),
        ValueOrderDesc AS (ORDER BY VALUE DESC)
-
+ORDER BY SetId;
 
 
 --Present--
@@ -307,15 +312,16 @@ SELECT SetId,
        GroupingId,
        Value,
        '' AS 'ValueOrderAsc ->',
-       FIRST_VALUE(SetId) OVER ValueOrderAsc AS FirstSetIdValueAsc,
-       LAST_VALUE(SetId) OVER ValueOrderAsc AS LastSetIdValueAsc,
+       FIRST_VALUE(SetId) OVER ValueOrderAsc AS FirstSetIdAsc,
+       LAST_VALUE(SetId) OVER ValueOrderAsc AS LastSetIdAsc,
 
        '' AS 'ValueOrderDesc ->',
-       FIRST_VALUE(SetId) OVER ValueOrderDesc AS FirstSetIdValueDesc,
-       LAST_VALUE(SetId) OVER ValueOrderDesc AS LastSetIdValueDesc
+       FIRST_VALUE(SetId) OVER ValueOrderDesc AS FirstSetIdeDesc,
+       LAST_VALUE(SetId) OVER ValueOrderDesc AS LastSetIdDesc
 FROM   [Set]
 WINDOW ValueOrderAsc AS (ORDER BY VALUE ASC),
-       ValueOrderDesc AS (ORDER BY VALUE DESC);
+       ValueOrderDesc AS (ORDER BY VALUE DESC)
+ORDER BY SetId;
 
 /*
 Controlling a moving frame
@@ -342,20 +348,21 @@ SELECT SetId,
        GroupingId,
        Value,
        '' AS 'ValueOrderAsc',
-       FIRST_VALUE(SetId) OVER ValueOrderAsc AS FirstSetIdValueOrderAsc,
-       LAST_VALUE(SetId) OVER ValueOrderAsc AS LastSetIdValueOrderAsc,
-       SUM(Value) OVER ValueOrderAsc AS SumValueValueOrderAsc,
+       FIRST_VALUE(SetId) OVER ValueOrderAsc AS FirstSetIdVOrderAsc,
+       LAST_VALUE(SetId) OVER ValueOrderAsc AS LastSetIdOrderAsc,
+       SUM(Value) OVER ValueOrderAsc AS SumValueOrderAsc,
 
        '' as 'ValueOrderAsc3',
-       FIRST_VALUE(SetId) OVER ValueOrderAsc3 AS FirstSetIdValueOrderAsc3Windows,
-       LAST_VALUE(SetId) OVER ValueOrderAsc3 AS LastSetIdValueOrderAsc3Windows,
-       SUM(Value) over ValueOrderAsc3 AS SumValueValueOrderAsc3Windows,
+       FIRST_VALUE(SetId) OVER ValueOrderAsc3Follow AS FirstSetIdOrderAsc3Follow,
+       LAST_VALUE(SetId) OVER ValueOrderAsc3Follow AS LastSetIdOrderAsc3Follow,
+       SUM(Value) over ValueOrderAsc3Follow AS SumValueOrderAsc3Follow,
+       Value
 
 FROM   [Set]
 WINDOW ValueOrderAsc as (ORDER BY VALUE ASC ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW), --these first two windows
        ValueOrderDesc as (ORDER BY VALUE DESC),                                                --are equivalent (though in different orders)
-       ValueOrderAsc3 as (ORDER BY VALUE ASC ROWS BETWEEN 0 PRECEDING AND 2 FOLLOWING)  ,
-       ValueOrderDesc3 as (ORDER BY VALUE DESC ROWS BETWEEN 0 PRECEDING AND 2 FOLLOWING)
+       ValueOrderAsc3Follow as (ORDER BY VALUE ASC ROWS BETWEEN 0 PRECEDING AND 2 FOLLOWING)  ,
+       ValueOrderDesc3Follow as (ORDER BY VALUE DESC ROWS BETWEEN 0 PRECEDING AND 2 FOLLOWING)
 ORDER BY SetId asc;
 
 
@@ -364,14 +371,14 @@ SELECT SetId,
        GroupingId,
        Value,
        '' AS 'ValueOrderAsc',
-       FIRST_VALUE(SetId) over ValueOrderUBP AS FirstSetIdValueOrderUBP,
-       LAST_VALUE(SetId) over ValueOrderUBP  AS LastSetIdValueOrderUBP,
-       SUM(Value) over ValueOrderUBP AS SumValueValueOrderUBP,
+       FIRST_VALUE(SetId) over ValueOrderUBP AS FirstSetIdOrderUBP,
+       LAST_VALUE(SetId) over ValueOrderUBP  AS LastSetIdOrderUBP,
+       SUM(Value) over ValueOrderUBP AS SumValueOrderUBP,
        
        '' AS 'ValueOrderUBF',
-       FIRST_VALUE(SetId) over ValueOrderUBF AS FirstSetIdValueOrderUBF,
-       LAST_VALUE(SetId) over ValueOrderUBF  AS LastSetIdValueOrderUBF,
-       SUM(Value) over ValueOrderUBF AS SumValueValueOrderUBF
+       FIRST_VALUE(SetId) over ValueOrderUBF AS FirstSetIdOrderUBF,
+       LAST_VALUE(SetId) over ValueOrderUBF  AS LastSetIdVOrderUBF,
+       SUM(Value) over ValueOrderUBF AS SumValueOrderUBF
 
 FROM   [Set]
 WINDOW ValueOrderUBP as (ORDER BY VALUE ASC ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW), --note preceding
@@ -384,18 +391,20 @@ SELECT SetId,
        GroupingId,
        Value,
        '' AS 'ValueOrderUBP',
-       FIRST_VALUE(SetId) over ValueOrderUBP AS FirstValueUBP,
-       LAST_VALUE(SetId) over ValueOrderUBP AS LastValueUBP,
+       FIRST_VALUE(SetId) over ValueOrderUBP AS FirstSetIdUBP,
+       LAST_VALUE(SetId) over ValueOrderUBP AS LastSetIdUBP,
+       SUM(Value) OVER ValueOrderUBP AS SumValueUBP,
 
        '' AS 'ValueOrderCR',
-       FIRST_VALUE(SetId) over ValueOrderCR AS FirstValueCR,
-       LAST_VALUE(SetId) over ValueOrderCR AS LastValueCR
+       FIRST_VALUE(SetId) over ValueOrderCR AS FirstSetIdCR,
+       LAST_VALUE(SetId) over ValueOrderCR AS LastSetIdCR,
+       SUM(Value) OVER ValueOrderCR AS SumValueCR
 
 FROM   [Set]
        --UBP is the same as RANGE BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW
        --and not including a RANGE with an ORDER BY.
 WINDOW ValueOrderUBP as (ORDER BY GroupingId ASC RANGE UNBOUNDED PRECEDING), 
-       ValueOrderCR as (ORDER BY GroupingId ASC RANGE CURRENT ROW);
+       ValueOrderCR as (ORDER BY GroupingId ASC RANGE CURRENT ROW); --this is just 1 range at a time... the Current Row becomes a range
        --Range groups the same values together, So you can see in the CR Rows.
 
 --here you can see that the equivalent values in the OrderBy are followed to the "last value"

@@ -246,6 +246,7 @@ FROM   #TestNewVersion
         FULL OUTER JOIN #TestOriginalVersion
             ON #TestOriginalVersion.ProductAlternateKey = #TestNewVersion.ProductAlternateKey
                AND #TestOriginalVersion.CalendarYear = #TestNewVersion.CalendarYear
+ORDER BY #TestNewVersion.CalendarYear
 
 --Ah, I did something wrong (deliberately!) that removed the 2011 rows.
 
@@ -313,23 +314,27 @@ WITH BaseRows AS (
 SELECT ProductAlternateKey, 
        FullDateAlternateKey,
        SUM(SalesAmount) AS DaySalesAmount,
-       LAG(FullDateAlternateKey,1) IGNORE NULLS OVER (PARTITION BY ProductAlternateKey 
+       LAG(FullDateAlternateKey,1) IGNORE NULLS --with this, we are getting the previous sale 
+                                                --no matter the date. WIthout it, we are just looking back one day
+                              OVER (PARTITION BY ProductAlternateKey 
                               ORDER BY FullDateAlternateKey) AS PreviousSalesDate,
-       LAG(SUM(SalesAmount),1) IGNORE NULLS OVER (PARTITION BY ProductAlternateKey 
+       LAG(SUM(SalesAmount),1) IGNORE NULLS 
+                               OVER (PARTITION BY ProductAlternateKey  --note dates not contiguous
                               ORDER BY FullDateAlternateKey) AS PreviousSalesAmount
-FROM   dbo.DimDate
-         LEFT JOIN dbo.FactInternetSales
-             JOIN dbo.DimProduct
+FROM   dbo.DimDate --now we need every day, for each product
+                   --so the cross product of Product and Day
+         CROSS JOIN (SELECT * FROM dbo.DimProduct WHERE DimProduct.ProductAlternateKey = 'BK-M18S-48') AS DimProduct
+         --  CROSS JOIN (SELECT * FROM dbo.DimProduct ) AS DimProduct
+            LEFT JOIN dbo.FactInternetSales
                 ON DimProduct.ProductKey = FactInternetSales.ProductKey
-                   AND DimProduct.ProductAlternateKey = 'BK-R89R-48'
-            ON dbo.FactInternetSales.OrderDateKey = dbo.DimDate.DateKey
+                   AND dbo.FactInternetSales.OrderDateKey = dbo.DimDate.DateKey
 GROUP BY ProductAlternateKey,
          FullDateAlternateKey
 )
 SELECT *
 FROM   BaseRows
-WHERE  DaySalesAmount IS NOT null
-ORDER BY FullDateAlternateKey ASC;
+--WHERE  DaySalesAmount IS NOT null
+ORDER BY FullDateAlternateKey DESC;
 
 
 --The median

@@ -52,7 +52,7 @@ Now you can see the differences here:
 */
 SELECT '' AS A_NotIn_A_Reference, *
 FROM   A
-EXCEPT
+EXCEPT   --rows not in A_Reference
 SELECT '', *
 FROM A_Reference;
 
