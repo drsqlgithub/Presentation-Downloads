@@ -63,6 +63,7 @@ FROM   Sales.SalesOrderDetail
 			ON Sales.SalesOrderDetail.ProductID = Production.Product.ProductID;
 
 DROP TABLE IF EXISTS #temp2
+
 --actual plan in text
 SET STATISTICS PROFILE ON;
 GO
@@ -91,6 +92,7 @@ SELECT Product.ProductID,
        Product.MakeFlag,
        Product.FinishedGoodsFlag,
        Product.Color
+--INTO #temp4
 FROM   Sales.SalesOrderDetail
 		 JOIN Production.Product
 			ON Sales.SalesOrderDetail.ProductID = Production.Product.ProductID;

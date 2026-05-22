@@ -116,7 +116,7 @@ SELECT  '' AS Diff_A_and_A_Reference,
              WHEN A_Reference.Aid IS NULL THEN 'A'
              ELSE 'Both' END AS RowExistsIn,
         --column comparison
-        CASE WHEN A_Reference.Value is distinct from A.Value
+        CASE WHEN A_Reference.Value IS DISTINCT FROM A.Value
              THEN 'Different'
              ELSE 'Same'
         END Value_Comparison,

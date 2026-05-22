@@ -358,7 +358,7 @@ AS (SELECT   ExpandedHierarchy.ParentCompanyId, SUM(CompanyTotals.TotalAmount) A
     GROUP BY ExpandedHierarchy.ParentCompanyId)
 --Then voila!
 SELECT   Company.Name, Company.CompanyId, Company.ParentCompanyId,
-         Aggregations.TotalSalesAmount,
+         Aggregations.TotalSalesAmount
          
 FROM     AdjacencyList.Company
          JOIN Aggregations

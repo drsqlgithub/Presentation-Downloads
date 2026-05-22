@@ -1,13 +1,13 @@
 
 --this is the expression, ignoring outer apostrophes
-DECLARE @expression nvarchar(max) = N'2.446' 
---DECLARE @expression nvarchar(max) = N'2.446 + 2.446' 
+DECLARE @expression NVARCHAR(MAX) = N'2.446' 
+DECLARE @expression NVARCHAR(MAX) = N'2.446 + 2.446' 
 
 --But 2.446 + 2.446 = 4.892, right?
 --DECLARE @Expression NVARCHAR(MAX) = '4.892'
 
 --add the expression to a simple SELECT statement
-DECLARE @SQL nvarchar(max) = 'SELECT ' + @expression + ' AS CheckMe'
+DECLARE @SQL NVARCHAR(MAX) = 'SELECT ' + @expression + ' AS CheckMe'
 
 --then add it to a query:
 SELECT

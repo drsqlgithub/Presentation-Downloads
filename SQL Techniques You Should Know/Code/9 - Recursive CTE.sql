@@ -11,11 +11,13 @@
 
 
 WITH NewSequence AS (
-SELECT 1 AS value
-UNION ALL
-SELECT value + 1
-FROM  NewSequence
-WHERE value < 100
+	SELECT 1 AS value
+
+	UNION ALL
+	
+	SELECT value + 1
+	FROM  NewSequence
+	WHERE value < 100
 )
 SELECT Value
 FROM   NewSequence;
