@@ -3,6 +3,9 @@
   "WorkspaceRootPath": "C:\\Users\\lodavi\\OneDrive - The Christian Broadcasting Network, Inc\\Documents\\GitHub\\Presentation-Downloads\\SQL Techniques You Should Know\\Code\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\lodavi\\OneDrive - The Christian Broadcasting Network, Inc\\Desktop\\Internet Activity query.sql||{B5A506EB-11BE-4782-9A18-21265C2CA0B4}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\lodavi\\OneDrive - The Christian Broadcasting Network, Inc\\Documents\\GitHub\\Presentation-Downloads\\SQL Techniques You Should Know\\Code\\3 - NULL Values.sql||{B5A506EB-11BE-4782-9A18-21265C2CA0B4}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:3 - NULL Values.sql||{B5A506EB-11BE-4782-9A18-21265C2CA0B4}"
     },
@@ -55,42 +58,54 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "3 - NULL Values.sql - (local).tempdb (NTD1\\lodavi (63))",
-              "DocumentMoniker": "C:\\Users\\lodavi\\OneDrive - The Christian Broadcasting Network, Inc\\Documents\\GitHub\\Presentation-Downloads\\SQL Techniques You Should Know\\Code\\3 - NULL Values.sql",
-              "RelativeDocumentMoniker": "3 - NULL Values.sql",
-              "ToolTip": "C:\\Users\\lodavi\\OneDrive - The Christian Broadcasting Network, Inc\\Documents\\GitHub\\Presentation-Downloads\\SQL Techniques You Should Know\\Code\\3 - NULL Values.sql - (local).tempdb (NTD1\\lodavi (63))",
-              "RelativeToolTip": "3 - NULL Values.sql - (local).tempdb (NTD1\\lodavi (63))",
+              "Title": "Internet Activity query.sql - edw.dev.sql.cbn.local.EnterpriseODS (NTD1\\lodavi (61))",
+              "DocumentMoniker": "C:\\Users\\lodavi\\OneDrive - The Christian Broadcasting Network, Inc\\Desktop\\Internet Activity query.sql",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\Desktop\\Internet Activity query.sql",
+              "ToolTip": "C:\\Users\\lodavi\\OneDrive - The Christian Broadcasting Network, Inc\\Desktop\\Internet Activity query.sql - edw.dev.sql.cbn.local.EnterpriseODS (NTD1\\lodavi (61))*",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\Desktop\\Internet Activity query.sql - edw.dev.sql.cbn.local.EnterpriseODS (NTD1\\lodavi (61))*",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
-              "WhenOpened": "2026-05-21T23:50:07.771Z",
-              "EditorCaption": " - (local).tempdb (NTD1\\lodavi (63))"
+              "WhenOpened": "2026-05-26T14:16:14.391Z",
+              "EditorCaption": " - edw.dev.sql.cbn.local.EnterpriseODS (NTD1\\lodavi (61))"
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "2 - Comparing Sets of data.sql - (local).tempdb (NTD1\\lodavi (52))",
+              "Title": "3 - NULL Values.sql - not connected",
+              "DocumentMoniker": "C:\\Users\\lodavi\\OneDrive - The Christian Broadcasting Network, Inc\\Documents\\GitHub\\Presentation-Downloads\\SQL Techniques You Should Know\\Code\\3 - NULL Values.sql",
+              "RelativeDocumentMoniker": "3 - NULL Values.sql",
+              "ToolTip": "C:\\Users\\lodavi\\OneDrive - The Christian Broadcasting Network, Inc\\Documents\\GitHub\\Presentation-Downloads\\SQL Techniques You Should Know\\Code\\3 - NULL Values.sql - not connected",
+              "RelativeToolTip": "3 - NULL Values.sql - not connected",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2026-05-21T23:50:07.771Z",
+              "EditorCaption": " - not connected"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "2 - Comparing Sets of data.sql",
               "DocumentMoniker": "C:\\Users\\lodavi\\OneDrive - The Christian Broadcasting Network, Inc\\Documents\\GitHub\\Presentation-Downloads\\SQL Techniques You Should Know\\Code\\2 - Comparing Sets of data.sql",
               "RelativeDocumentMoniker": "2 - Comparing Sets of data.sql",
-              "ToolTip": "C:\\Users\\lodavi\\OneDrive - The Christian Broadcasting Network, Inc\\Documents\\GitHub\\Presentation-Downloads\\SQL Techniques You Should Know\\Code\\2 - Comparing Sets of data.sql - (local).tempdb (NTD1\\lodavi (52))",
-              "RelativeToolTip": "2 - Comparing Sets of data.sql - (local).tempdb (NTD1\\lodavi (52))",
+              "ToolTip": "C:\\Users\\lodavi\\OneDrive - The Christian Broadcasting Network, Inc\\Documents\\GitHub\\Presentation-Downloads\\SQL Techniques You Should Know\\Code\\2 - Comparing Sets of data.sql",
+              "RelativeToolTip": "2 - Comparing Sets of data.sql",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
               "WhenOpened": "2026-05-21T23:39:35.798Z",
-              "EditorCaption": " - (local).tempdb (NTD1\\lodavi (52))"
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "102-AdjacencyListQueries.sql - (local).master (NTD1\\lodavi (77))",
+              "DocumentIndex": 4,
+              "Title": "102-AdjacencyListQueries.sql",
               "DocumentMoniker": "C:\\Users\\lodavi\\OneDrive - The Christian Broadcasting Network, Inc\\Documents\\GitHub\\Presentation-Downloads\\SQL Techniques You Should Know\\Code\\9 - Breadth Processing\\102-AdjacencyListQueries.sql",
               "RelativeDocumentMoniker": "9 - Breadth Processing\\102-AdjacencyListQueries.sql",
-              "ToolTip": "C:\\Users\\lodavi\\OneDrive - The Christian Broadcasting Network, Inc\\Documents\\GitHub\\Presentation-Downloads\\SQL Techniques You Should Know\\Code\\9 - Breadth Processing\\102-AdjacencyListQueries.sql - (local).master (NTD1\\lodavi (77))",
-              "RelativeToolTip": "9 - Breadth Processing\\102-AdjacencyListQueries.sql - (local).master (NTD1\\lodavi (77))",
+              "ToolTip": "C:\\Users\\lodavi\\OneDrive - The Christian Broadcasting Network, Inc\\Documents\\GitHub\\Presentation-Downloads\\SQL Techniques You Should Know\\Code\\9 - Breadth Processing\\102-AdjacencyListQueries.sql",
+              "RelativeToolTip": "9 - Breadth Processing\\102-AdjacencyListQueries.sql",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
               "WhenOpened": "2026-05-13T16:52:25.93Z",
-              "EditorCaption": " - (local).master (NTD1\\lodavi (77))"
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "101-AdjacencyList-BaseWithSmallData.sql",
               "DocumentMoniker": "C:\\Users\\lodavi\\OneDrive - The Christian Broadcasting Network, Inc\\Documents\\GitHub\\Presentation-Downloads\\SQL Techniques You Should Know\\Code\\9 - Breadth Processing\\101-AdjacencyList-BaseWithSmallData.sql",
               "RelativeDocumentMoniker": "9 - Breadth Processing\\101-AdjacencyList-BaseWithSmallData.sql",
@@ -102,7 +117,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "100-Create The Database.sql",
               "DocumentMoniker": "C:\\Users\\lodavi\\OneDrive - The Christian Broadcasting Network, Inc\\Documents\\GitHub\\Presentation-Downloads\\SQL Techniques You Should Know\\Code\\9 - Breadth Processing\\100-Create The Database.sql",
               "RelativeDocumentMoniker": "9 - Breadth Processing\\100-Create The Database.sql",
@@ -114,7 +129,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "15 - Finding the datatype of an expression.sql",
               "DocumentMoniker": "C:\\Users\\lodavi\\OneDrive - The Christian Broadcasting Network, Inc\\Documents\\GitHub\\Presentation-Downloads\\SQL Techniques You Should Know\\Code\\15 - Finding the datatype of an expression.sql",
               "RelativeDocumentMoniker": "15 - Finding the datatype of an expression.sql",
@@ -126,7 +141,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "9 - Recursive CTE.sql",
               "DocumentMoniker": "C:\\Users\\lodavi\\OneDrive - The Christian Broadcasting Network, Inc\\Documents\\GitHub\\Presentation-Downloads\\SQL Techniques You Should Know\\Code\\9 - Recursive CTE.sql",
               "RelativeDocumentMoniker": "9 - Recursive CTE.sql",
@@ -138,7 +153,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "6 - Window Functions on Real Table.sql",
               "DocumentMoniker": "C:\\Users\\lodavi\\OneDrive - The Christian Broadcasting Network, Inc\\Documents\\GitHub\\Presentation-Downloads\\SQL Techniques You Should Know\\Code\\6 - Window Functions on Real Table.sql",
               "RelativeDocumentMoniker": "6 - Window Functions on Real Table.sql",
@@ -150,7 +165,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "4 - GROUP BY.sql",
               "DocumentMoniker": "C:\\Users\\lodavi\\OneDrive - The Christian Broadcasting Network, Inc\\Documents\\GitHub\\Presentation-Downloads\\SQL Techniques You Should Know\\Code\\4 - GROUP BY.sql",
               "RelativeDocumentMoniker": "4 - GROUP BY.sql",
@@ -162,15 +177,15 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "1 - Performance Tools.sql - (local).AdventureWorks2025 (NTD1\\lodavi (78))",
+              "DocumentIndex": 3,
+              "Title": "1 - Performance Tools.sql",
               "DocumentMoniker": "C:\\Users\\lodavi\\OneDrive - The Christian Broadcasting Network, Inc\\Documents\\GitHub\\Presentation-Downloads\\SQL Techniques You Should Know\\Code\\1 - Performance Tools.sql",
               "RelativeDocumentMoniker": "1 - Performance Tools.sql",
-              "ToolTip": "C:\\Users\\lodavi\\OneDrive - The Christian Broadcasting Network, Inc\\Documents\\GitHub\\Presentation-Downloads\\SQL Techniques You Should Know\\Code\\1 - Performance Tools.sql - (local).AdventureWorks2025 (NTD1\\lodavi (78))",
-              "RelativeToolTip": "1 - Performance Tools.sql - (local).AdventureWorks2025 (NTD1\\lodavi (78))",
+              "ToolTip": "C:\\Users\\lodavi\\OneDrive - The Christian Broadcasting Network, Inc\\Documents\\GitHub\\Presentation-Downloads\\SQL Techniques You Should Know\\Code\\1 - Performance Tools.sql",
+              "RelativeToolTip": "1 - Performance Tools.sql",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
               "WhenOpened": "2026-05-13T15:37:29.471Z",
-              "EditorCaption": " - (local).AdventureWorks2025 (NTD1\\lodavi (78))"
+              "EditorCaption": ""
             }
           ]
         }
