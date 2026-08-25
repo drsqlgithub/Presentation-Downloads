@@ -58,26 +58,26 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Internet Activity query.sql - edw.dev.sql.cbn.local.EnterpriseODS (NTD1\\lodavi (61))",
+              "Title": "Internet Activity query.sql - not connected",
               "DocumentMoniker": "C:\\Users\\lodavi\\OneDrive - The Christian Broadcasting Network, Inc\\Desktop\\Internet Activity query.sql",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\Desktop\\Internet Activity query.sql",
-              "ToolTip": "C:\\Users\\lodavi\\OneDrive - The Christian Broadcasting Network, Inc\\Desktop\\Internet Activity query.sql - edw.dev.sql.cbn.local.EnterpriseODS (NTD1\\lodavi (61))*",
-              "RelativeToolTip": "..\\..\\..\\..\\..\\Desktop\\Internet Activity query.sql - edw.dev.sql.cbn.local.EnterpriseODS (NTD1\\lodavi (61))*",
+              "ToolTip": "C:\\Users\\lodavi\\OneDrive - The Christian Broadcasting Network, Inc\\Desktop\\Internet Activity query.sql - not connected",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\Desktop\\Internet Activity query.sql - not connected",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
               "WhenOpened": "2026-05-26T14:16:14.391Z",
-              "EditorCaption": " - edw.dev.sql.cbn.local.EnterpriseODS (NTD1\\lodavi (61))"
+              "EditorCaption": " - not connected"
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "3 - NULL Values.sql - not connected",
+              "Title": "3 - NULL Values.sql",
               "DocumentMoniker": "C:\\Users\\lodavi\\OneDrive - The Christian Broadcasting Network, Inc\\Documents\\GitHub\\Presentation-Downloads\\SQL Techniques You Should Know\\Code\\3 - NULL Values.sql",
               "RelativeDocumentMoniker": "3 - NULL Values.sql",
-              "ToolTip": "C:\\Users\\lodavi\\OneDrive - The Christian Broadcasting Network, Inc\\Documents\\GitHub\\Presentation-Downloads\\SQL Techniques You Should Know\\Code\\3 - NULL Values.sql - not connected",
-              "RelativeToolTip": "3 - NULL Values.sql - not connected",
+              "ToolTip": "C:\\Users\\lodavi\\OneDrive - The Christian Broadcasting Network, Inc\\Documents\\GitHub\\Presentation-Downloads\\SQL Techniques You Should Know\\Code\\3 - NULL Values.sql",
+              "RelativeToolTip": "3 - NULL Values.sql",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
               "WhenOpened": "2026-05-21T23:50:07.771Z",
-              "EditorCaption": " - not connected"
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
