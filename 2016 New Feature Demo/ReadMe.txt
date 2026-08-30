@@ -1,1 +1,0 @@
-Presentation was all done in SSMS
