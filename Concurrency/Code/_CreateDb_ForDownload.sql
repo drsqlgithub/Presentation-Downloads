@@ -3,9 +3,17 @@ GO
 
 --Turn on SQLCMD Mode to run this script
 
+
 ----locate where you want data and logs
-:setvar dataFile "O:\SQL Files\Data\SQL2019"
-:setvar logFile "O:\SQL Files\Data\SQL2019"
+:setvar dataFile "C:\Program Files\Microsoft SQL Server\MSSQL17.MSSQLSERVER\MSSQL\DATA\"
+:setvar logFile "C:\Program Files\Microsoft SQL Server\MSSQL17.MSSQLSERVER\MSSQL\DATA\"
+
+/* If you want to use the default, this is the query to find the details
+-- Query to find default data and log directories
+SELECT SERVERPROPERTY('InstanceDefaultDataPath') AS DefaultDataPath,
+       SERVERPROPERTY('InstanceDefaultLogPath') AS DefaultLogPath;
+GO
+*/
 
 --if no, and db exists, then it will fail
 :setvar DROPEXISTING Yes
@@ -22,18 +30,21 @@ GO
 --ENABLED or DISABLED
 :setvar DelayedDurabity DISABLED
 
---YES to create in mem filegroup
-:setvar IncludeInMem YES
-
 :setvar ReadCommittedSnapshot OFF
 :setvar SnapshotIsolationLevel OFF
-:setvar MemOptimizedElevateToSnapshot OFF
 :setvar AcceleratedDatabaseRecovery OFF
+--REQUIRES AcceleratedDatabaseRecovery to be on;
+:setvar OptimizedLocking2025 OFF
 
 :setvar databaseSize 30MB
 :setvar databaseMaxSize 2GB
-:setvar logSize 30MB
-:setvar logMaxSize 100MB
+:setvar logSize 1GB
+:setvar logMaxSize 2GB
+
+
+--YES to create in mem filegroup
+:setvar IncludeInMem NO
+:setvar MemOptimizedElevateToSnapshot OFF
 
 USE master
 GO
@@ -83,6 +94,7 @@ ALTER DATABASE $(DataBaseName)
 GO
 
 ALTER DATABASE $(DataBaseName) SET ACCELERATED_DATABASE_RECOVERY = $(AcceleratedDatabaseRecovery);
+ALTER DATABASE $(DataBaseName) SET OPTIMIZED_LOCKING = $(OptimizedLocking2025)
 
 
 
@@ -141,7 +153,13 @@ UNION ALL
 SELECT 'Memory Optimized Operations Enabled'
 WHERE  EXISTS (   SELECT *
                   FROM   sys.filegroups
-                  WHERE  type_desc = 'MEMORY_OPTIMIZED_DATA_FILEGROUP');
+                  WHERE  type_desc = 'MEMORY_OPTIMIZED_DATA_FILEGROUP')
+UNION ALL
+SELECT CASE DATABASEPROPERTYEX(DB_NAME(), 'IsOptimizedLockingOn')
+        WHEN 1 THEN 'OptimizedLockingEnabled'
+        WHEN 0 THEN 'OptimizedLockingDisabled'
+        ELSE 'CheckResultsForOptimizeLockingSetup' END AS optimized_locking_enabled;
+
 GO
 CREATE SCHEMA Demo
 GO
@@ -217,5 +235,19 @@ INSERT INTO Demo.Interaction(Subject,
                              PersonId)
 VALUES('Hello3', 'Hello There', SYSDATETIME(), 8)
 GO
+
+
+CREATE TABLE dbo.OptimizedLockingDemo
+(
+    OptimizedLockingDemoId int NOT NULL PRIMARY KEY,
+    SomeValue VARCHAR(10) NOT NULL,
+    --padding to make more real data size
+    Padding CHAR(1000) DEFAULT 'padding' 
+);
+INSERT INTO dbo.OptimizedLockingDemo (OptimizedLockingDemoId,SomeValue)
+SELECT value, RIGHT(CONCAT('000000',value),6)
+FROM   GENERATE_SERIES(1,100000);
+GO
+
 
 SELECT 'Database Created!'

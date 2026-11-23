@@ -24,6 +24,9 @@ GO
 
 --stop 
 
+--****************************************************************
+--****************************************************************
+
 ROLLBACK;
 GO
 
@@ -43,6 +46,9 @@ FROM   Demo.SingleTable;
 GO
 
 --stop
+
+--****************************************************************
+--****************************************************************
 
 ROLLBACK;
 GO
@@ -64,9 +70,11 @@ FROM   Demo.SingleTable
 WHERE  Value = 'Fred';
 GO
 
---stop
+--stop (bud don't change connection)
 
-ROLLBACK; --leave other transaction open
+--then continue, leave the other connection transaction open
+
+ROLLBACK; 
 GO
 
 -------------------------------------------------
@@ -86,10 +94,16 @@ FROM   Demo.SingleTable
 WHERE  Value = 'Barney';
 GO
 
---stop, add the index (in other window) and then show what happens
+--stop and rollback,  then add the index (in other window) 
+--come back and try again and show what happens
+
+--****************************************************************
+--****************************************************************
 
 ROLLBACK;
 GO
+
+
 
 --NOTE: Later, we will see READ COMMITTED SNAPSHOT setting that would
 --eliminate the blocking, but would NOT eliminate the performance issues
@@ -135,6 +149,9 @@ FROM   Demo.SingleTable;
 GO
 
 --stop, rollback the other connection and run again
+--****************************************************************
+--****************************************************************
+
 
 ROLLBACK;
 GO
@@ -186,6 +203,9 @@ GO
 
 --stop
 
+--****************************************************************
+--****************************************************************
+
 --part 2
 
 BEGIN TRANSACTION;
@@ -195,6 +215,11 @@ SET    Value = UPPER(Value)
 WHERE  Value = 'Fred';
 
 --stop
+
+--****************************************************************
+--****************************************************************
+
+
 ROLLBACK;
 
 ---------------------------------------------------

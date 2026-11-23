@@ -1,0 +1,118 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\SourceControlled\\GitHub\\Presentation-Downloads\\Concurrency\\Code\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\SourceControlled\\GitHub\\Presentation-Downloads\\Concurrency\\Code\\3 - 2 - OptimizedLocking - Connection 2.sql||{B5A506EB-11BE-4782-9A18-21265C2CA0B4}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:3 - 2 - OptimizedLocking - Connection 2.sql||{B5A506EB-11BE-4782-9A18-21265C2CA0B4}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\SourceControlled\\GitHub\\Presentation-Downloads\\Concurrency\\Code\\3 - 1 - OptimizedLocking - Connection 1.sql||{B5A506EB-11BE-4782-9A18-21265C2CA0B4}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:3 - 1 - OptimizedLocking - Connection 1.sql||{B5A506EB-11BE-4782-9A18-21265C2CA0B4}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\SourceControlled\\GitHub\\Presentation-Downloads\\Concurrency\\Code\\3 - OptimizedLocking.sql||{B5A506EB-11BE-4782-9A18-21265C2CA0B4}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:3 - OptimizedLocking.sql||{B5A506EB-11BE-4782-9A18-21265C2CA0B4}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\SourceControlled\\GitHub\\Presentation-Downloads\\Concurrency\\Code\\_LockViewer.sql||{B5A506EB-11BE-4782-9A18-21265C2CA0B4}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:_LockViewer.sql||{B5A506EB-11BE-4782-9A18-21265C2CA0B4}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\SourceControlled\\GitHub\\Presentation-Downloads\\Concurrency\\Code\\_CreateDb_ForDownload.sql||{B5A506EB-11BE-4782-9A18-21265C2CA0B4}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:_CreateDb_ForDownload.sql||{B5A506EB-11BE-4782-9A18-21265C2CA0B4}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 161,
+          "SelectedChildIndex": 4,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{ceba2aee-81da-4075-8186-3aa83e6740bf}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "3 - 1 - OptimizedLocking - Connection 1.sql - (local).MattersOfConcurrency (NTD1\\lodavi (77))",
+              "DocumentMoniker": "C:\\SourceControlled\\GitHub\\Presentation-Downloads\\Concurrency\\Code\\3 - 1 - OptimizedLocking - Connection 1.sql",
+              "RelativeDocumentMoniker": "3 - 1 - OptimizedLocking - Connection 1.sql",
+              "ToolTip": "C:\\SourceControlled\\GitHub\\Presentation-Downloads\\Concurrency\\Code\\3 - 1 - OptimizedLocking - Connection 1.sql - (local).MattersOfConcurrency (NTD1\\lodavi (77))",
+              "RelativeToolTip": "3 - 1 - OptimizedLocking - Connection 1.sql - (local).MattersOfConcurrency (NTD1\\lodavi (77))",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2026-11-23T04:18:37.688Z",
+              "EditorCaption": " - (local).MattersOfConcurrency (NTD1\\lodavi (77))"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "3 - OptimizedLocking.sql - (local).MattersOfConcurrency (NTD1\\lodavi (56))",
+              "DocumentMoniker": "C:\\SourceControlled\\GitHub\\Presentation-Downloads\\Concurrency\\Code\\3 - OptimizedLocking.sql",
+              "RelativeDocumentMoniker": "3 - OptimizedLocking.sql",
+              "ToolTip": "C:\\SourceControlled\\GitHub\\Presentation-Downloads\\Concurrency\\Code\\3 - OptimizedLocking.sql - (local).MattersOfConcurrency (NTD1\\lodavi (56))",
+              "RelativeToolTip": "3 - OptimizedLocking.sql - (local).MattersOfConcurrency (NTD1\\lodavi (56))",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2026-11-23T04:08:27.781Z",
+              "EditorCaption": " - (local).MattersOfConcurrency (NTD1\\lodavi (56))"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "_CreateDb_ForDownload.sql - (local).MattersOfConcurrency (NTD1\\lodavi (80))",
+              "DocumentMoniker": "C:\\SourceControlled\\GitHub\\Presentation-Downloads\\Concurrency\\Code\\_CreateDb_ForDownload.sql",
+              "RelativeDocumentMoniker": "_CreateDb_ForDownload.sql",
+              "ToolTip": "C:\\SourceControlled\\GitHub\\Presentation-Downloads\\Concurrency\\Code\\_CreateDb_ForDownload.sql - (local).MattersOfConcurrency (NTD1\\lodavi (80))",
+              "RelativeToolTip": "_CreateDb_ForDownload.sql - (local).MattersOfConcurrency (NTD1\\lodavi (80))",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2026-11-23T00:50:27.159Z",
+              "EditorCaption": " - (local).MattersOfConcurrency (NTD1\\lodavi (80))"
+            }
+          ]
+        },
+        {
+          "DockedWidth": 273,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "_LockViewer.sql - (local).MattersOfConcurrency (NTD1\\lodavi (57))",
+              "DocumentMoniker": "C:\\SourceControlled\\GitHub\\Presentation-Downloads\\Concurrency\\Code\\_LockViewer.sql",
+              "RelativeDocumentMoniker": "_LockViewer.sql",
+              "ToolTip": "C:\\SourceControlled\\GitHub\\Presentation-Downloads\\Concurrency\\Code\\_LockViewer.sql - (local).MattersOfConcurrency (NTD1\\lodavi (57))",
+              "RelativeToolTip": "_LockViewer.sql - (local).MattersOfConcurrency (NTD1\\lodavi (57))",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2026-11-23T04:22:46.476Z",
+              "EditorCaption": " - (local).MattersOfConcurrency (NTD1\\lodavi (57))"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "3 - 2 - OptimizedLocking - Connection 2.sql - (local).MattersOfConcurrency (NTD1\\lodavi (98))",
+              "DocumentMoniker": "C:\\SourceControlled\\GitHub\\Presentation-Downloads\\Concurrency\\Code\\3 - 2 - OptimizedLocking - Connection 2.sql",
+              "RelativeDocumentMoniker": "3 - 2 - OptimizedLocking - Connection 2.sql",
+              "ToolTip": "C:\\SourceControlled\\GitHub\\Presentation-Downloads\\Concurrency\\Code\\3 - 2 - OptimizedLocking - Connection 2.sql - (local).MattersOfConcurrency (NTD1\\lodavi (98))",
+              "RelativeToolTip": "3 - 2 - OptimizedLocking - Connection 2.sql - (local).MattersOfConcurrency (NTD1\\lodavi (98))",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2026-11-23T04:18:40.463Z",
+              "EditorCaption": " - (local).MattersOfConcurrency (NTD1\\lodavi (98))"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

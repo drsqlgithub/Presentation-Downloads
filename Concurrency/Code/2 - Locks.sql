@@ -4,6 +4,13 @@ GO
 SELECT @@SPID;
 GO
 
+--**
+--What will be locked?
+
+--****************************************************************
+--****************************************************************
+
+
 --Description: Show locks held by READ UNCOMMITTED read only transaction 
 SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
 BEGIN TRANSACTION
@@ -14,6 +21,9 @@ FROM   Demo.SingleTable
 --**
 --What will be locked?
 
+--****************************************************************
+--****************************************************************
+
 ROLLBACK TRANSACTION
 GO
 
@@ -22,17 +32,24 @@ SET TRANSACTION ISOLATION LEVEL READ COMMITTED
 BEGIN TRANSACTION
 
 SELECT *
-FROM   Demo.SingleTable --(HOLDLOCK)
+FROM   Demo.SingleTable 
 
 --**
 --What will be locked?
 
+--****************************************************************
+--****************************************************************
+
 
 --This will show you what was locked, by holding the locks for the transaction
+--May not be exactly what is locked, because this can change how things are locked 
+--AS the hint could alter how the locks are taken but it can be a useful thing to 
+--help you see what will be locked.
 SELECT *
 FROM   Demo.SingleTable (HOLDLOCK)
 
---**
+--****************************************************************
+--****************************************************************
 
 ROLLBACK TRANSACTION
 GO
@@ -48,6 +65,9 @@ FROM   Demo.SingleTable
 --**
 --What will be locked?
 
+--****************************************************************
+--****************************************************************
+
 ROLLBACK TRANSACTION
 GO
 
@@ -60,6 +80,10 @@ FROM   Demo.SingleTable
 
 --**
 --What will be locked?
+
+--****************************************************************
+--****************************************************************
+
 
 ROLLBACK TRANSACTION
 GO
@@ -107,6 +131,10 @@ WHERE Value like 'F%'
 --**
 --What will be locked?
 
+--****************************************************************
+--****************************************************************
+
+
 ROLLBACK TRANSACTION
 GO
 
@@ -122,6 +150,9 @@ WHERE Value like 'F%'
 
 --**
 --What will be locked?
+
+--****************************************************************
+--****************************************************************
 
 ROLLBACK TRANSACTION
 GO
@@ -139,6 +170,9 @@ WHERE Value like 'F%'
 --**
 --What will be locked? (Note the IX lock on the object...)
 
+--****************************************************************
+--****************************************************************
+
 ROLLBACK TRANSACTION
 GO
 
@@ -154,6 +188,9 @@ WHERE Value like 'F%'
 --**
 --What will be locked? (Note that SERIALIZABLE applies to the read of the table, so no new
 --rows could be created due to this requiring a table scan (no index on Value column)
+
+--****************************************************************
+--****************************************************************
 
 ROLLBACK TRANSACTION
 GO
@@ -173,3 +210,5 @@ WHERE Value like 'F%'
 ROLLBACK TRANSACTION
 GO
 
+--****************************************************************
+--****************************************************************

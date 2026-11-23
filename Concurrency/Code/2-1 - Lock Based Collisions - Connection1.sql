@@ -23,6 +23,9 @@ GO
 
 --stop,  then run other query
 
+--****************************************************************
+--****************************************************************
+
 ROLLBACK;
 GO
 
@@ -46,6 +49,9 @@ FROM   Demo.SingleTable WITH (XLOCK); --(adding PAGLOCK will cause blocking, AND
 GO
 
 --stop, show lock viewer
+
+--****************************************************************
+--****************************************************************
 
 ROLLBACK;
 GO
@@ -72,18 +78,29 @@ GO
 
 --stop
 
+--****************************************************************
+--****************************************************************
+
 ROLLBACK;
 GO
 
-/* Add index to SingleTable
+--Add index to SingleTable
 CREATE INDEX Value on Demo.SingleTable (Value)
 
---Far better to use unique constraint IF the value is unique!
+/*
+--alternatively, it can be far better to use unique constraint IF the value is unique
+--for integrity reasons because an index should ideally not cause a failure.
+--will be no different for the purpose of this example
 drop index Value on Demo.SingleTable;
 
 ALTER TABLE Demo.SingleTable 
    ADD CONSTRAINT AKsingleTable UNIQUE(Value);
 */
+
+--Now, redo the scenario
+
+--****************************************************************
+--****************************************************************
 
 -------------------------------------------------
 -- Scenario 4:  (*) Writer (1) Reader (2)
@@ -104,6 +121,8 @@ WHERE  Value <> 'Fred';
 GO
 
 --stop
+--****************************************************************
+--****************************************************************
 
 --part 2
 
@@ -111,8 +130,14 @@ INSERT INTO Demo.SingleTable(Value)
 VALUES('AlternateFred'), ('AlternateBarney');
 
 --stop
+--****************************************************************
+--****************************************************************
+
 ROLLBACK;
 GO
+
+--****************************************************************
+--****************************************************************
 
 ---------------------------------------------------
 ---- Scenario 5:  (*) Reader (1) Writer (2)
@@ -158,12 +183,15 @@ SET TRANSACTION ISOLATION LEVEL REPEATABLE READ;
 
 BEGIN TRANSACTION;
 
---part 1
+--part 1, view the entire talble
 SELECT *
 FROM   Demo.SingleTable;
 GO
 
 --stop
+
+--****************************************************************
+--****************************************************************
 
 --part 2
 
